@@ -1,0 +1,22 @@
+# Statyczna wersja szymonrokicki.pl
+# Kodowanie i strona błędu
+AddDefaultCharset UTF-8
+ErrorDocument 404 /404.html
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Artykuł pod dokładnym adresem bez ukośnika (zgodnym z <link rel="canonical">)
+    # /artykul/lokacja-miasta-na-prawie-magdeburskim  ->  .../index.html
+    RewriteRule ^artykul/([^/.]+)$ artykul/$1/index.html [L]
+</IfModule>
+
+# Delikatne cache dla statycznych zasobów (opcjonalne)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+</IfModule>

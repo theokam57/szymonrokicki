@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  PRZYKŁADOWY ARTYKUŁ — POKAZ WSZYSTKICH ELEMENTÓW
+  ============================================================
+  Ten plik NIE jest przeznaczony do publikacji. Służy jako podgląd:
+  otwórz go w przeglądarce, żeby zobaczyć jak wyglądają zdjęcia,
+  przypisy, słowniczek, ramki i tabele — a potem skopiuj potrzebny
+  kawałek kodu do własnego artykułu.
+
+  Aby podejrzeć poprawnie (ze stylami), skopiuj ten plik do:
+      static/artykul/podglad/index.html
+  i otwórz przez serwer. Po obejrzeniu możesz go usunąć.
+
+  Czysty szablon do pisania:  szablony/artykul-pusty.html
+  Same kawałki kodu:          szablony/fragmenty.md
+  ============================================================
+-->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Przykładowy artykuł pokazujący wszystkie dostępne elementy: zdjęcia, przypisy, słowniczek, ramki i tabele.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#11100d">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+    <link rel="stylesheet" href="/assets/css/public.css">
+    <script src="/assets/js/public.js" defer></script>
+    <title>Przykładowy artykuł — pokaz elementów | Szymon Rokicki</title>
+</head>
+<body class="site-body" data-app-base="">
+<a class="skip-link" href="#main-content">Przejdź do treści</a>
+<div id="reading-bar" class="reading-bar" aria-hidden="true"></div>
+<header class="site-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/" aria-label="Szymon Rokicki">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+            </a>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-controls="site-navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="site-navigation" class="navigation" aria-label="Główne menu">
+            <ul>
+                <li><a href="/" class="">Strona główna</a></li>
+                <li><a href="/o-mnie/" class="">O mnie</a></li>
+                <li><a href="/projekty/" class="">Projekty</a></li>
+                <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/kontakt/" class="">Kontakt</a></li>
+                <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content" class="content-page article-page">
+    <article class="container article-container reveal">
+        <a href="/historia-lelowa/" class="back-link">Powrót do spisu historii Lelowa</a>
+
+        <header class="article-header">
+            <p class="eyebrow">Historia Lelowa</p>
+            <h1 class="medieval-heading article-title">Przykładowy artykuł — pokaz elementów</h1>
+            <p class="article-lead">Ten tekst pokazuje wszystkie klocki, z których możesz zbudować artykuł: zdjęcia z podpisem, przypisy, hasła słowniczka, ramki redakcyjne i tabele.</p>
+            <div class="article-meta">
+                <span class="article-meta-pill">Autor: Szymon Rokicki</span>
+                <span class="article-meta-pill"><time datetime="2026-07-22">22.07.2026</time></span>
+                <span class="article-meta-pill">4 min czytania</span>
+            </div>
+            <div class="article-tools no-print">
+                <button type="button" class="btn btn-small btn-ghost" onclick="window.print()">Drukuj artykuł</button>
+                <button type="button" class="btn btn-small btn-ghost" data-copy-text="https://szymonrokicki.pl/artykul/przyklad">Kopiuj URL</button>
+            </div>
+        </header>
+
+        <div class="article-content">
+
+            <!-- ZWYKŁY AKAPIT — pierwsza litera pierwszego akapitu staje się inicjałem -->
+            <p class="article-paragraph">Lelów był przez wieki ważnym ośrodkiem dawnej Małopolski. Ten akapit pokazuje domyślne formatowanie tekstu oraz to, jak pierwsza litera artykułu zamienia się w ozdobny inicjał.</p>
+
+            <!-- PRZYPIS w treści: numer [1] odsyła do listy na dole strony -->
+            <p class="article-paragraph">Miasto lokowano na prawie magdeburskim<sup class="footnote-ref" id="ref-przyklad-1" data-ref-id="przyklad-1"><a href="#fn-przyklad-1" aria-label="Przypis 1">[1]</a></sup>, co określiło jego układ przestrzenny na kolejne stulecia. Kolejny przypis wygląda tak samo, zmienia się tylko numer i identyfikator<sup class="footnote-ref" id="ref-przyklad-2" data-ref-id="przyklad-2"><a href="#fn-przyklad-2" aria-label="Przypis 2">[2]</a></sup>.</p>
+
+            <!-- HASŁO SŁOWNICZKA — po najechaniu pokazuje definicję w dymku -->
+            <p class="article-paragraph">Najechaj kursorem na wyrażenie <span class="glossary-term" tabindex="0" role="button" aria-label="Definicja: Prawo magdeburskie">prawo magdeburskie<span class="glossary-tooltip" role="tooltip"><strong>Prawo magdeburskie</strong><span>Średniowieczny wzorzec prawa miejskiego wywodzący się z Magdeburga. Określał organizację samorządu, sądownictwa i powinności mieszczan.</span><small>Źródło: opracowanie własne</small></span></span>, aby zobaczyć dymek z definicją. Na telefonie wystarczy dotknąć.</p>
+
+            <h2 class="medieval-heading">Zdjęcie na całą szerokość</h2>
+
+            <!-- ZDJĘCIE Z PODPISEM -->
+            <figure class="article-image">
+                <img src="/assets/images/lelowzamek.jpg" alt="Widok na miejsce dawnego zamku w Lelowie" loading="lazy">
+                <figcaption>Miejsce dawnego zamku lelowskiego. <span class="image-source">Źródło: archiwum własne</span></figcaption>
+            </figure>
+
+            <h2 class="medieval-heading">Zdjęcie oblewane tekstem</h2>
+
+            <!-- ZDJĘCIE OBLEWANE TEKSTEM Z PRAWEJ (media-float-right / -left / -center) -->
+            <figure class="article-image media-float-right">
+                <img src="/assets/images/lelowfranciszkanie.jpg" alt="Klasztor franciszkanów w Lelowie" loading="lazy">
+                <figcaption>Klasztor franciszkanów.</figcaption>
+            </figure>
+
+            <p class="article-paragraph">Ten akapit opływa zdjęcie umieszczone po prawej stronie. Aby przenieść obraz na lewą stronę, zamień klasę <code>media-float-right</code> na <code>media-float-left</code>. Klasa <code>media-float-center</code> wyśrodkuje zdjęcie bez oblewania tekstem. Na telefonach wszystkie warianty automatycznie przechodzą na pełną szerokość.</p>
+
+            <p class="article-paragraph">Kolejny akapit kontynuuje oblewanie, dopóki starczy tekstu obok obrazu. Warto dać przynajmniej dwa akapity, żeby układ wyglądał naturalnie.</p>
+
+            <h2 class="medieval-heading">Ramki redakcyjne</h2>
+
+            <!-- FAKT ŹRÓDŁOWY -->
+            <aside class="article-note article-note-fact">
+                <h3>Fakt źródłowy</h3>
+                <p>Informacja potwierdzona w źródle — używaj tam, gdzie masz pewne, udokumentowane dane.</p>
+            </aside>
+
+            <!-- HIPOTEZA -->
+            <aside class="article-note article-note-hypothesis">
+                <h3>Hipoteza</h3>
+                <p>Twoje przypuszczenie oparte na przesłankach, ale niepotwierdzone wprost w źródłach.</p>
+            </aside>
+
+            <!-- KOMENTARZ AUTORA -->
+            <aside class="article-note article-note-comment">
+                <h3>Komentarz autora</h3>
+                <p>Osobista uwaga, dopowiedzenie albo zastrzeżenie metodologiczne.</p>
+            </aside>
+
+            <!-- RAMKA OSTRZEGAWCZA / INFORMACYJNA -->
+            <div class="notice-box">Ten blok wyróżnia ważną uwagę dla czytelnika — np. że fragment zawiera tezy autorskie.</div>
+
+            <p class="article-paragraph">Pojedyncze zdanie możesz też oznaczyć jako <span class="teza-autorska">tezę autorską wewnątrz akapitu</span>, bez tworzenia osobnej ramki.</p>
+
+            <h2 class="medieval-heading">Cytat</h2>
+
+            <blockquote class="article-quote">
+                <p>Cytat ze źródła albo z opracowania. Podaj autora i miejsce w przypisie.</p>
+            </blockquote>
+
+            <h2 class="medieval-heading">Lista</h2>
+
+            <ul>
+                <li>Pierwszy punkt listy.</li>
+                <li>Drugi punkt listy.</li>
+                <li>Trzeci punkt listy.</li>
+            </ul>
+
+            <h2 class="medieval-heading">Tabela</h2>
+
+            <!-- TABELA — owinięta w table-scroll, żeby przewijała się na telefonie -->
+            <div class="table-scroll">
+                <table class="article-table">
+                    <thead>
+                        <tr>
+                            <th>Rok</th>
+                            <th>Wydarzenie</th>
+                            <th>Źródło</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1193</td>
+                            <td>Pierwsza wzmianka o grodzie</td>
+                            <td>dokument fundacyjny</td>
+                        </tr>
+                        <tr>
+                            <td>1340/41</td>
+                            <td>Lokacja miasta</td>
+                            <td>akt lokacyjny</td>
+                        </tr>
+                        <tr>
+                            <td>1354</td>
+                            <td>Zgoda na budowę murów</td>
+                            <td>Janko z Czarnkowa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- PRZYPISY: kolejność <li> = numery [1], [2] w treści -->
+        <section class="article-references" aria-labelledby="article-references-heading">
+            <h2 id="article-references-heading" class="medieval-heading">Przypisy i bibliografia</h2>
+            <ol class="references-list">
+                <li id="fn-przyklad-1">
+                    <span class="reference-type">książka</span>,
+                    <strong>Jacek Laberschek</strong>, 2018,
+                    <em>Dzieje średniowiecznego Lelowa</em>, Kraków, KONTUR, s. 67, ISBN: 978-83-65334-27-5
+                    <a class="reference-back" href="#ref-przyklad-1" aria-label="Wróć do miejsca przypisu">↩</a>
+                </li>
+                <li id="fn-przyklad-2">
+                    <span class="reference-type">strona internetowa</span>,
+                    <strong>Autor</strong>, 2026,
+                    <em>Tytuł strony</em>,
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer">link</a>, dostęp: 2026-07-22
+                    <a class="reference-back" href="#ref-przyklad-2" aria-label="Wróć do miejsca przypisu">↩</a>
+                </li>
+            </ol>
+        </section>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <p class="scribe-footer">&copy; 2026 Szymon Rokicki — Historia. Tożsamość. Działanie.</p>
+            <p class="footer-note">Autorskie teksty, szkice i opracowania o historii Lelowa oraz lokalnym dziedzictwie.</p>
+        </div>
+        <nav class="footer-links" aria-label="Linki w stopce">
+            <a href="/regulamin/">Regulamin</a>
+            <a href="/kontakt/">Kontakt</a>
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

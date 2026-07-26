@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://szymonrokicki.pl/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url><loc>https://szymonrokicki.pl/o-mnie/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://szymonrokicki.pl/projekty/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://szymonrokicki.pl/historia-lelowa/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://szymonrokicki.pl/mapa-interaktywna/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://szymonrokicki.pl/galeria-map/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://szymonrokicki.pl/kalendarium/</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://szymonrokicki.pl/zrodla-i-bibliografia/</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+    <url><loc>https://szymonrokicki.pl/kontakt/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+    <url><loc>https://szymonrokicki.pl/regulamin/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+    <url><loc>https://szymonrokicki.pl/polityka-prywatnosci/</loc><lastmod>2026-07-26</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+    <url><loc>https://szymonrokicki.pl/wesprzyj/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/lokacja-miasta-na-prawie-magdeburskim</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/stary-lelow</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/zamek-lelowski</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/mury-miejskie-lelowa</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/rynek-w-lelowie</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/dawne-szlaki-lelowa</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://szymonrokicki.pl/artykul/mowimy-po-swojemu</loc><lastmod>2026-07-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  PUSTY SZABLON ARTYKUŁU
+  ============================================================
+  JAK UŻYĆ:
+  1. Skopiuj ten plik do:  static/artykul/TWOJ-SLUG/index.html
+     (nazwa folderu = adres artykułu, np. "zamek-lelowski" → /artykul/zamek-lelowski)
+  2. Podmień wszystkie miejsca oznaczone {{ ... }}.
+  3. Wpisz treść w sekcji <div class="article-content">.
+  4. Dodaj artykuł do listy w  static/historia-lelowa/index.html
+     (i opcjonalnie na stronę główną: static/index.html).
+  5. Dopisz adres do  static/sitemap.xml.
+
+  SLUG: tylko małe litery, cyfry i myślniki. Bez polskich znaków.
+        np. "lokacja-miasta-na-prawie-magdeburskim"
+
+  Gotowe kawałki HTML (zdjęcia, przypisy, słowniczek, ramki)
+  znajdziesz w pliku  szablony/fragmenty.md
+  ============================================================
+-->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{OPIS - 1-2 zdania, ok. 150 znaków}}">
+    <meta name="keywords" content="{{SLOWA, KLUCZOWE, PO, PRZECINKU}}">
+    <meta name="author" content="Szymon Rokicki">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#11100d">
+    <meta property="og:title" content="{{TYTUL}} | Szymon Rokicki">
+    <meta property="og:description" content="{{OPIS}}">
+    <meta property="og:url" content="https://szymonrokicki.pl/artykul/{{SLUG}}">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TYTUL}} | Szymon Rokicki">
+    <meta name="twitter:description" content="{{OPIS}}">
+    <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <link rel="canonical" href="https://szymonrokicki.pl/artykul/{{SLUG}}">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+    <link rel="preload" href="/assets/css/public.css" as="style">
+    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
+    <link rel="stylesheet" href="/assets/css/public.css">
+
+    <!-- Dane strukturalne dla Google. Podmień tytuł, opis, daty i slug. -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"{{TYTUL}}","description":"{{OPIS}}","author":{"@type":"Person","name":"Szymon Rokicki"},"publisher":{"@type":"Organization","name":"Szymon Rokicki","logo":{"@type":"ImageObject","url":"https://szymonrokicki.pl/assets/images/sr-logo.png"}},"datePublished":"{{RRRR-MM-DD}}T12:00:00+02:00","dateModified":"{{RRRR-MM-DD}}T12:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://szymonrokicki.pl/artykul/{{SLUG}}"}}</script>
+
+    <script src="/assets/js/public.js" defer></script>
+    <title>{{TYTUL}} | Szymon Rokicki</title>
+</head>
+<body class="site-body" data-app-base="">
+<a class="skip-link" href="#main-content">Przejdź do treści</a>
+<div id="reading-bar" class="reading-bar" aria-hidden="true"></div>
+<header class="site-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/" aria-label="Szymon Rokicki">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+            </a>
+        </div>
+
+        <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-controls="site-navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="site-navigation" class="navigation" aria-label="Główne menu">
+            <ul>
+                <li><a href="/" class="">Strona główna</a></li>
+                <li><a href="/o-mnie/" class="">O mnie</a></li>
+                <li><a href="/projekty/" class="">Projekty</a></li>
+                <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/kontakt/" class="">Kontakt</a></li>
+                <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content" class="content-page article-page">
+    <article class="container article-container reveal">
+        <a href="/historia-lelowa/" class="back-link">Powrót do spisu historii Lelowa</a>
+
+        <header class="article-header">
+            <p class="eyebrow">{{KATEGORIA, np. Historia Lelowa}}</p>
+
+            <h1 class="medieval-heading article-title">{{TYTUL}}</h1>
+
+            <p class="article-lead">{{KROTKI WSTEP - jedno, dwa zdania}}</p>
+
+            <div class="article-meta">
+                <span class="article-meta-pill">Autor: Szymon Rokicki</span>
+                <span class="article-meta-pill">
+                    <time datetime="{{RRRR-MM-DD}}">{{DD.MM.RRRR}}</time>
+                </span>
+                <span class="article-meta-pill">{{X}} min czytania</span>
+            </div>
+
+            <div class="article-tools no-print">
+                <button type="button" class="btn btn-small btn-ghost" onclick="window.print()">Drukuj artykuł</button>
+                <button type="button" class="btn btn-small btn-ghost" data-copy-text="https://szymonrokicki.pl/artykul/{{SLUG}}">Kopiuj URL</button>
+            </div>
+        </header>
+
+        <!-- ==================== TREŚĆ ARTYKUŁU ====================
+             Każdy akapit: <p class="article-paragraph">...</p>
+             Zdjęcia, przypisy, słowniczek i ramki — patrz fragmenty.md
+             ========================================================= -->
+        <div class="article-content">
+
+            <p class="article-paragraph">{{PIERWSZY AKAPIT. Pierwsza litera zostanie automatycznie powiększona jako inicjał.}}</p>
+
+            <p class="article-paragraph">{{KOLEJNY AKAPIT}}</p>
+
+            <h2 class="medieval-heading">{{ŚRÓDTYTUŁ}}</h2>
+
+            <p class="article-paragraph">{{TREŚĆ}}</p>
+
+        </div>
+
+        <!-- ==================== PRZYPISY I BIBLIOGRAFIA ====================
+             Usuń całą tę sekcję, jeśli artykuł nie ma przypisów.
+             Kolejność <li> musi odpowiadać numerom [1], [2]... w treści.
+             ================================================================ -->
+        <section class="article-references" aria-labelledby="article-references-heading">
+            <h2 id="article-references-heading" class="medieval-heading">Przypisy i bibliografia</h2>
+            <ol class="references-list">
+                <li id="fn-{{ID-PRZYPISU}}">
+                    <span class="reference-type">książka</span>,
+                    <strong>{{AUTOR}}</strong>, {{ROK}},
+                    <em>{{TYTUŁ}}</em>, {{MIEJSCE}}, {{WYDAWCA}}, s. {{STRONY}}, ISBN: {{ISBN}}
+                    <a class="reference-back" href="#ref-{{ID-PRZYPISU}}" aria-label="Wróć do miejsca przypisu">↩</a>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Stopka artykułu — powrót do spisu tekstów -->
+        <nav class="article-footer-nav no-print" aria-label="Nawigacja po artykule">
+            <p>Tekst autorski &mdash; Szymon Rokicki</p>
+            <a href="/historia-lelowa/" class="btn btn-ghost btn-small">Wszystkie teksty o Lelowie</a>
+        </nav>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <p class="scribe-footer">&copy; 2026 Szymon Rokicki — Historia. Tożsamość. Działanie.</p>
+            <p class="footer-note">Autorskie teksty, szkice i opracowania o historii Lelowa oraz lokalnym dziedzictwie.</p>
+        </div>
+        <nav class="footer-links" aria-label="Linki w stopce">
+            <a href="/regulamin/">Regulamin</a>
+            <a href="/kontakt/">Kontakt</a>
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

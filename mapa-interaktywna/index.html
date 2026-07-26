@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Interaktywna mapa Lelowa na podkładzie OpenStreetMap z punktami orientacyjnymi.">
+    <meta name="keywords" content="Lelów, mapa interaktywna, dawne mapy, historia Lelowa, urbanistyka">
+    <meta name="author" content="Szymon Rokicki">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#11100d">
+    <meta property="og:title" content="Interaktywna mapa Lelowa | Szymon Rokicki">
+    <meta property="og:description" content="Interaktywna mapa Lelowa na podkładzie OpenStreetMap z punktami orientacyjnymi.">
+    <meta property="og:url" content="https://szymonrokicki.pl/mapa-interaktywna/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interaktywna mapa Lelowa | Szymon Rokicki">
+    <meta name="twitter:description" content="Interaktywna mapa Lelowa na podkładzie OpenStreetMap z punktami orientacyjnymi.">
+    <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <link rel="canonical" href="https://szymonrokicki.pl/mapa-interaktywna/">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+    <link rel="preload" href="/assets/css/public.css" as="style">
+    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
+    <link rel="stylesheet" href="/assets/css/public.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="/assets/js/public.js" defer></script>
+    <title>Interaktywna mapa Lelowa | Szymon Rokicki</title>
+</head>
+<body class="site-body" data-app-base="">
+<a class="skip-link" href="#main-content">Przejdź do treści</a>
+<header class="site-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <a href="/" aria-label="Szymon Rokicki">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+            </a>
+        </div>
+
+        <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-controls="site-navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="site-navigation" class="navigation" aria-label="Główne menu">
+            <ul>
+                <li><a href="/" class="">Strona główna</a></li>
+                <li><a href="/o-mnie/" class="">O mnie</a></li>
+                <li><a href="/projekty/" class="">Projekty</a></li>
+                <li><a href="/historia-lelowa/" class="active">Historia Lelowa</a></li>
+                <li><a href="/kontakt/" class="">Kontakt</a></li>
+                <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content" class="history-page map-page">
+    <div class="container editable-page-content">
+        <header class="map-page-heading reveal">
+            <p class="eyebrow">Punkty orientacyjne na realnej mapie</p>
+            <h1 class="medieval-heading-main">Interaktywna mapa Lelowa</h1>
+            <p class="script-text">Prawdziwa mapa OpenStreetMap z punktami orientacyjnymi dawnego Lelowa. Ustaw zakres wieków na osi czasu, aby zobaczyć, które obiekty wtedy istniały. Współrzędne części punktów są przybliżone — zobacz <a href="/galeria-map/">galerię starych map</a> do porównania z dawnymi układami.</p>
+        </header>
+
+        <div class="map-timeline reveal" data-map-timeline>
+            <div class="map-timeline-heading">
+                <h2 class="medieval-heading">Oś czasu</h2>
+                <p class="map-timeline-range" data-timeline-label>X w. – XXI w.</p>
+            </div>
+            <div class="map-timeline-sliders">
+                <input type="range" min="10" max="21" step="1" value="10" data-timeline-from aria-label="Wiek początkowy zakresu">
+                <input type="range" min="10" max="21" step="1" value="21" data-timeline-to aria-label="Wiek końcowy zakresu">
+            </div>
+        </div>
+
+        <section class="map-explorer reveal" data-map-explorer>
+            <aside class="map-control-panel">
+                <div>
+                    <h2 class="medieval-heading">Punkty</h2>
+                    <div class="map-marker-list" role="list">
+                        <button
+                            type="button"
+                            class="map-marker-button active"
+                            data-map-marker
+                            data-marker-id="stary-lelow"
+                            data-marker-label="Stary Lelów (gród)"
+                            data-marker-summary="Pierwotny gród, wzmiankowany w 1193 roku. Istniał do lokacji miasta w 1340/41 roku, gdy osadę przeniesiono w nowe miejsce. Współrzędne przybliżone (rejon Staromieścia)."
+                            data-marker-lat="50.6798"
+                            data-marker-lng="19.6221"
+                            data-marker-century-start="12"
+                            data-marker-century-end="14"
+                        >
+                            Stary Lelów (gród)
+                        </button>
+                        <button
+                            type="button"
+                            class="map-marker-button "
+                            data-map-marker
+                            data-marker-id="rynek"
+                            data-marker-label="Rynek"
+                            data-marker-summary="Centralny punkt miasta lokowanego na prawie magdeburskim w 1340/41 roku z inicjatywy Kazimierza Wielkiego."
+                            data-marker-lat="50.6832"
+                            data-marker-lng="19.6249"
+                            data-marker-century-start="14"
+                            data-marker-century-end="21"
+                        >
+                            Rynek
+                        </button>
+                        <button
+                            type="button"
+                            class="map-marker-button "
+                            data-map-marker
+                            data-marker-id="zamek"
+                            data-marker-label="Zamek lelowski"
+                            data-marker-summary="Gotycki zamek wzniesiony przez Kazimierza Wielkiego w miejscu wcześniejszego grodu. Rozebrany w latach 1804–1805. Współrzędne orientacyjne."
+                            data-marker-lat="50.6845"
+                            data-marker-lng="19.6275"
+                            data-marker-century-start="14"
+                            data-marker-century-end="19"
+                        >
+                            Zamek lelowski
+                        </button>
+                        <button
+                            type="button"
+                            class="map-marker-button "
+                            data-map-marker
+                            data-marker-id="mury"
+                            data-marker-label="Mury miejskie"
+                            data-marker-summary="Zgodę na budowę murów miejskich król wydał w 1354 roku (wg kronikarza Janka z Czarnkowa). Współrzędne orientacyjne."
+                            data-marker-lat="50.6828"
+                            data-marker-lng="19.6258"
+                            data-marker-century-start="14"
+                            data-marker-century-end="19"
+                        >
+                            Mury miejskie
+                        </button>
+                        <button
+                            type="button"
+                            class="map-marker-button "
+                            data-map-marker
+                            data-marker-id="szlak"
+                            data-marker-label="Dawny szlak"
+                            data-marker-summary="Przybliżony przebieg dawnego szlaku handlowego i pielgrzymkowego, którego ślady widoczne są w układzie dróg do dziś."
+                            data-marker-lat="50.6810"
+                            data-marker-lng="19.6210"
+                            data-marker-century-start="10"
+                            data-marker-century-end="21"
+                        >
+                            Dawny szlak
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <figure class="map-stage">
+                <div class="map-viewport leaflet-map-viewport" data-map-viewport role="application" aria-label="Interaktywna mapa Lelowa">
+                    <noscript>Interaktywna mapa wymaga włączonego JavaScriptu. Zobacz <a href="/galeria-map/">galerię map</a>.</noscript>
+                </div>
+                <figcaption>OpenStreetMap — Lelów i okolice</figcaption>
+            </figure>
+
+            <aside class="map-detail-panel">
+                <h2 class="medieval-heading" data-map-detail-title>Stary Lelów (gród)</h2>
+                <p class="script-text" data-map-detail-text>Pierwotny gród, wzmiankowany w 1193 roku. Istniał do lokacji miasta w 1340/41 roku, gdy osadę przeniesiono w nowe miejsce. Współrzędne przybliżone (rejon Staromieścia).</p>
+                <a href="/galeria-map/" class="btn btn-ghost">Otwórz galerię map</a>
+            </aside>
+        </section>
+    </div>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <p class="scribe-footer">&copy; 2026 Szymon Rokicki — Historia. Tożsamość. Działanie.</p>
+            <p class="footer-note">Autorskie teksty, szkice i opracowania o historii Lelowa oraz lokalnym dziedzictwie.</p>
+        </div>
+        <nav class="footer-links" aria-label="Linki w stopce">
+            <a href="/regulamin/">Regulamin</a>
+            <a href="/polityka-prywatnosci/">Polityka prywatności</a>
+            <a href="/kontakt/">Kontakt</a>
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

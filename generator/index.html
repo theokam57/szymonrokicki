@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator obiektów mapy | Historia Lelowa</title>
+<meta name="description" content="Generator obiektów dla interaktywnej mapy Lelowa">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/assets/images/favicon.ico">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap"rel="stylesheet">
+<style>
+    :root {
+        --bg:#11100d;
+        --panel:#1b1915;
+        --panel2:#252118;
+        --gold:#c7a94d;
+        --gold2:#e7c972;
+        --text:#f2ead7;
+        --text2:#cfc3a6;
+        --border:rgba(231,201,114,.25);
+        --radius:8px;
+        --shadow:0 15px 35px rgba(0,0,0,.35);
+        --fontHead:'Cinzel',serif;
+        --fontBody:'Crimson Text',serif;
+    }
+
+    * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body {
+        background:#11100d;
+        font-family:var(--fontBody);
+        color:var(--text);
+        padding:40px;
+    }
+
+    h1 {
+        font-family:var(--fontHead);
+        margin-bottom:8px;
+        color:var(--gold2);
+    }
+
+    p {
+        color:var(--text2);
+        margin-bottom:25px;
+    }
+
+    .wrapper {
+        display:grid;
+        grid-template-columns:380px 1fr;
+        gap:25px;
+        align-items:start;
+    }
+
+    .panel {
+        background:var(--panel);
+        border:1px solid var(--border);
+        padding:20px;
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+    }
+
+    label {
+        display:block;
+        margin-top:15px;
+        margin-bottom:6px;
+        font-weight:bold;
+        color:var(--gold2);
+    }
+
+    input, textarea, select {
+        width:100%;
+        padding:10px;
+        border:none;
+        outline:none;
+        border-radius:5px;
+        background:#2a261d;
+        color:white;
+        font-size:16px;
+        font-family:inherit;
+    }
+
+    textarea {
+        resize:vertical;
+        min-height:120px;
+    }
+
+    button {
+        margin-top:20px;
+        padding:12px 18px;
+        background:linear-gradient(var(--gold2),var(--gold));
+        border:none;
+        border-radius:6px;
+        cursor:pointer;
+        font-weight:bold;
+        font-size:15px;
+    }
+
+    button:hover {
+        filter:brightness(1.05);
+    }
+
+    #map {
+        height:700px;
+        border-radius:8px;
+        border:1px solid var(--border);
+    }
+
+    .coordinates {
+        margin-top:20px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .object-list {
+        margin-top:25px;
+        max-height:350px;
+        overflow:auto;
+        border-top:1px solid var(--border);
+        padding-top:20px;
+    }
+
+    .object {
+        padding:10px;
+        background:var(--panel2);
+        margin-bottom:10px;
+        border-radius:5px;
+        cursor:pointer;
+    }
+
+    .object:hover {
+        background:#383022;
+    }
+
+    .actions {
+        display:flex;
+        gap:10px;
+        margin-top:20px;
+        flex-wrap:wrap;
+    }
+
+    pre {
+        margin-top:20px;
+        background:#0d0d0d;
+        padding:15px;
+        overflow:auto;
+        border-radius:6px;
+        max-height:250px;
+        font-size:13px;
+    }
+
+    @media(max-width:1100px){
+        .wrapper{
+            grid-template-columns:1fr;
+        }
+
+        #map{
+            height:500px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>Generator obiektów mapy</h1>
+
+<p>
+Kliknij na mapie, uzupełnij formularz i dodaj obiekt.
+Na końcu jednym kliknięciem pobierzesz gotowy plik <strong>markers.json</strong>.
+</p>
+
+<div class="wrapper">
+
+<div class="panel">
+
+<label>Nazwa</label>
+<input id="name">
+
+<label>Opis</label>
+<textarea id="description"></textarea>
+
+<label>Kategoria</label>
+
+<select id="category">
+
+<option value="zamek">🏰 Zamek</option>
+<option value="kosciol">⛪ Kościół</option>
+<option value="brama">🚪 Brama</option>
+<option value="most">🌉 Most</option>
+<option value="cmentarz">🪦 Cmentarz</option>
+<option value="rynek">🏘 Rynek</option>
+<option value="inne">📍 Inne</option>
+
+</select>
+
+<label>Od wieku</label>
+
+<input
+type="number"
+id="from"
+min="10"
+max="21"
+value="14">
+
+<label>Do wieku</label>
+
+<input
+type="number"
+id="to"
+min="10"
+max="21"
+value="21">
+
+<div class="coordinates">
+
+<div>
+
+<label>Latitude</label>
+
+<input id="lat" readonly>
+
+</div>
+
+<div>
+
+<label>Longitude</label>
+
+<input id="lng" readonly>
+
+</div>
+
+</div>
+
+<div class="actions">
+
+<button id="add">
+Dodaj obiekt
+</button>
+
+<button id="download">
+Pobierz JSON
+</button>
+
+<button id="import">
+Wczytaj JSON
+</button>
+
+<input type="file" id="fileInput" accept=".json" style="display:none;">
+
+</div>
+
+<div class="object-list" id="list">
+
+</div>
+
+<pre id="output"></pre>
+
+</div>
+    <div>
+        <div id="map"></div>
+    </div>
+</div>
+
+<script>
+let editIndex = -1;
+let objects = [];
+let currentMarker = null;
+let map = null;
+
+// Inicjalizacja zmiennych DOM
+const nameInput = document.getElementById("name");
+const descriptionInput = document.getElementById("description");
+const categoryInput = document.getElementById("category");
+const fromInput = document.getElementById("from");
+const toInput = document.getElementById("to");
+const latInput = document.getElementById("lat");
+const lngInput = document.getElementById("lng");
+const list = document.getElementById("list");
+const output = document.getElementById("output");
+
+// Inicjalizacja mapy
+map = L.map('map').setView([52.0, 19.0], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
+}).addTo(map);
+
+map.on('click', (e) => {
+    latInput.value = e.latlng.lat.toFixed(6);
+    lngInput.value = e.latlng.lng.toFixed(6);
+    
+    if (currentMarker) {
+        map.removeLayer(currentMarker);
+    }
+    
+    currentMarker = L.marker(
+        [e.latlng.lat, e.latlng.lng],
+        {
+            draggable: true
+        }
+    ).addTo(map);
+    
+    currentMarker.on("dragend", () => {
+        const pos = currentMarker.getLatLng();
+        latInput.value = pos.lat.toFixed(6);
+        lngInput.value = pos.lng.toFixed(6);
+    });
+});
+
+// Funkcja do tworzenia slug-a z nazwy
+function slugify(text){
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/ł/g,"l")
+        .replace(/[^a-z0-9]+/g,"-")
+        .replace(/^-+|-+$/g,"");
+}
+
+// Funkcja do tworzenia unikalnego ID
+function getUniqueId(baseId) {
+    let id = baseId;
+    let counter = 2;
+    while (objects.some(obj => obj.id === id)) {
+        id = baseId + '-' + counter;
+        counter++;
+    }
+    return id;
+}
+
+// Funkcja do wyświetlenia JSON
+function refreshJSON() {
+    output.textContent = JSON.stringify(objects, null, 2);
+}
+
+// Zapis do localStorage
+function saveToLocalStorage() {
+    localStorage.setItem('lelowMarkers', JSON.stringify(objects));
+}
+
+// Odczyt z localStorage
+function loadFromLocalStorage() {
+    const saved = localStorage.getItem('lelowMarkers');
+    if (saved) {
+        try {
+            objects = JSON.parse(saved);
+            refreshList();
+        } catch (e) {
+            console.error('Błąd przy wczytywaniu z localStorage:', e);
+        }
+    }
+}
+
+// Import JSON z pliku
+function setupFileImport() {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const imported = JSON.parse(event.target.result);
+                if (Array.isArray(imported)) {
+                    objects = imported;
+                    saveToLocalStorage();
+                    refreshList();
+                    alert('Wczytano ' + objects.length + ' obiektów');
+                } else {
+                    alert('Plik nie zawiera tablicy JSON');
+                }
+            } catch (err) {
+                alert('Błąd przy wczytywaniu pliku: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    });
+    return fileInput;
+}
+
+// Załaduj dane z localStorage przy starcie
+loadFromLocalStorage();
+
+// Referencja do przycisku dodawania
+const addButton = document.getElementById("add");
+
+addButton.addEventListener("click", () => {
+
+    if (!nameInput.value.trim()) {
+        alert("Podaj nazwę obiektu.");
+        return;
+    }
+
+    if (!latInput.value || !lngInput.value) {
+        alert("Kliknij na mapie, aby wybrać lokalizację.");
+        return;
+    }
+
+    const baseId = slugify(nameInput.value);
+    const uniqueId = getUniqueId(baseId);
+
+    const object = {
+        id: uniqueId,
+        name: nameInput.value.trim(),
+        category: categoryInput.value,
+        description: descriptionInput.value.trim(),
+        lat: Number(latInput.value),
+        lng: Number(lngInput.value),
+        from: Number(fromInput.value),
+        to: Number(toInput.value)
+    };
+
+    if (editIndex === -1) {
+        objects.push(object);
+    } else {
+        objects[editIndex] = object;
+        editIndex = -1;
+    }
+
+    saveToLocalStorage();
+    clearForm();
+    refreshList();
+    
+    map.setView(
+        [object.lat, object.lng],
+        17
+    );
+
+});
+
+function clearForm() {
+
+    nameInput.value = "";
+    descriptionInput.value = "";
+    categoryInput.value = "inne";
+    fromInput.value = 14;
+    toInput.value = 21;
+
+    latInput.value = "";
+    lngInput.value = "";
+
+    if (currentMarker) {
+        map.removeLayer(currentMarker);
+        currentMarker = null;
+    }
+    
+    map.closePopup();
+    
+    editIndex = -1;
+    addButton.textContent = "Dodaj obiekt";
+
+}
+
+function refreshList() {
+
+    list.innerHTML = "";
+
+    objects.forEach((obj, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "object";
+
+        div.innerHTML = `
+            <strong>${obj.name}</strong><br>
+            <small>${obj.category}</small><br>
+            ${obj.lat}, ${obj.lng}
+            <br><br>
+            <button class="edit">Edytuj</button>
+            <button class="delete">Usuń</button>
+        `;
+
+        div.querySelector(".edit").onclick = (e) => {
+
+            e.stopPropagation();
+
+            editIndex = index;
+            addButton.textContent = "Zapisz zmiany";
+
+            nameInput.value = obj.name;
+            descriptionInput.value = obj.description;
+            categoryInput.value = obj.category;
+            fromInput.value = obj.from;
+            toInput.value = obj.to;
+            latInput.value = obj.lat;
+            lngInput.value = obj.lng;
+
+            if (currentMarker) {
+                map.removeLayer(currentMarker);
+            }
+
+            currentMarker = L.marker(
+                [obj.lat, obj.lng],
+                {
+                    draggable: true
+                }
+            ).addTo(map);
+
+            currentMarker.on("dragend", () => {
+
+                const pos = currentMarker.getLatLng();
+
+                latInput.value = pos.lat.toFixed(6);
+                lngInput.value = pos.lng.toFixed(6);
+
+            });
+
+            map.setView([obj.lat, obj.lng], 18);
+
+        };
+
+        div.querySelector(".delete").onclick = (e) => {
+
+            e.stopPropagation();
+
+            if (!confirm("Usunąć obiekt?")) return;
+
+            objects.splice(index, 1);
+            saveToLocalStorage();
+            refreshList();
+
+        };
+
+        div.onclick = () => {
+
+            map.setView([obj.lat, obj.lng], 18);
+
+        };
+
+        list.appendChild(div);
+
+    });
+
+    refreshJSON();
+
+}
+
+document.getElementById("download").addEventListener("click", () => {
+
+    const blob = new Blob(
+        [
+            JSON.stringify(objects, null, 4)
+        ],
+        {
+            type: "application/json"
+        }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "markers.json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+});
+
+// Przycisk importu
+setupFileImport();
+document.getElementById("import").addEventListener("click", () => {
+    document.getElementById('fileInput').click();
+});
+
+refreshList();
+</script>
+
+</body>
+</html>

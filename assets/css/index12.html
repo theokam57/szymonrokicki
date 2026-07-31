@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATELIER — Create. Share. Showcase.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ===================== RESET / BASE ===================== */
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  body{
+    overflow-x:hidden;
+    background:#0a0a0f;
+    color:#eef3fb;
+    font-family: 'Space Grotesk', sans-serif;
+    --accent: #4fe3c1;
+    scrollbar-color: var(--accent) #0a0a0f;
+  }
+  ::-webkit-scrollbar{ width:8px; }
+  ::-webkit-scrollbar-track{ background:#0a0a0f; }
+  ::-webkit-scrollbar-thumb{ background:var(--accent); transition: background .4s ease; }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+
+  .panel{
+    position:relative;
+    min-height:100vh;
+    min-height:100svh;
+    width:100%;
+    scroll-snap-align:start;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding: 8vh 8vw;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:1.4rem;
+    opacity:.85;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    margin-top:2.2rem;
+    padding:.85rem 1.6rem;
+    font-weight:700;
+    font-size:.95rem;
+    border:2px solid currentColor;
+    cursor:pointer;
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+  }
+  .cta:hover{ transform: translateY(-3px); }
+
+  .feature-list{ margin-top:1.8rem; display:flex; flex-direction:column; gap:.55rem; }
+  .feature-list li{ font-size:.95rem; display:flex; gap:.6rem; align-items:baseline; }
+
+  .panel-inner{ max-width:760px; position:relative; z-index:2; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ===================== SIDE NAV ===================== */
+  .side-nav{
+    position:fixed;
+    right:1.6rem;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    gap:1.05rem;
+  }
+  .side-nav a{
+    position:relative;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    display:block;
+    transition: background .3s ease, transform .3s ease;
+  }
+  .side-nav a.active{
+    background:var(--accent);
+    transform:scale(1.35);
+  }
+  .side-nav a span{
+    position:absolute;
+    right:135%;
+    top:50%;
+    transform:translateY(-50%);
+    font-family:'JetBrains Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.08em;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+  }
+  .side-nav a:hover span{ opacity:1; }
+  @media (max-width:720px){ .side-nav{ display:none; } }
+
+  /* ===================== BRAND MARK ===================== */
+  .brandmark{
+    position:fixed;
+    top:1.6rem;
+    left:1.6rem;
+    z-index:50;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.8rem;
+    letter-spacing:.05em;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    mix-blend-mode:difference;
+    color:#fff;
+  }
+  .brandmark .dot{ width:7px; height:7px; background:var(--accent); transition:background .3s ease; }
+
+  /* ===================== CHANNEL INDICATOR ===================== */
+  .channel{
+    position:fixed;
+    bottom:1.6rem;
+    left:1.6rem;
+    z-index:50;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    color:#fff;
+    mix-blend-mode:difference;
+    display:flex;
+    gap:.5rem;
+  }
+
+  /* ===================== INTRO ===================== */
+  .panel--intro{
+    background:radial-gradient(ellipse at 30% 20%, #14243a 0%, #0a0a0f 60%);
+    justify-content:center;
+    text-align:center;
+    flex-direction:column;
+  }
+  .panel--intro .panel-inner{ max-width:900px; margin:0 auto; }
+  .intro-headline{
+    font-size:clamp(2rem, 5.6vw, 4.2rem);
+    line-height:1.15;
+    font-weight:700;
+  }
+  .swap-word{
+    display:inline-block;
+    min-width:1ch;
+    transition: color .2s ease;
+  }
+  .swap-word.f-pixel{ font-family:'Press Start 2P', monospace; font-size:.5em; color:#ff5a5f; vertical-align:middle; }
+  .swap-word.f-editorial{ font-family:'Archivo Black', sans-serif; color:#ff4d1c; }
+  .swap-word.f-corporate{ font-family:Arial, Helvetica, sans-serif; font-weight:700; color:#1b4f9c; }
+  .swap-word.f-terminal{ font-family:'JetBrains Mono', monospace; color:#39ff88; }
+
+  .intro-sub{
+    margin-top:1.6rem;
+    font-size:1.05rem;
+    color:#9aa8c2;
+    max-width:520px;
+    margin-left:auto; margin-right:auto;
+  }
+  .scroll-hint{
+    margin-top:3.2rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.75rem;
+    letter-spacing:.15em;
+    color:#5c6b85;
+    animation: bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(6px);} }
+
+  .swatches{
+    display:flex; justify-content:center; align-items:center; gap:.6rem; margin-top:2.4rem;
+  }
+  .swatches span{ width:26px; height:26px; border-radius:3px; }
+  .swatch-more{
+    display:flex; align-items:center; justify-content:center;
+    background:transparent !important;
+    border:1px dashed #5c6b85;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.62rem;
+    color:#5c6b85;
+  }
+
+  /* ===================== PHILOSOPHY PANEL ===================== */
+  .panel--philosophy{ background:#0d1017; }
+  .phil-inner{ max-width:1040px; }
+  .phil-headline{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    margin-bottom:2.6rem;
+    letter-spacing:-.01em;
+  }
+  .phil-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:2.4rem; }
+  .phil-step{
+    opacity:0; transform:translateY(16px);
+    transition: opacity .6s ease, transform .6s ease;
+    border-top:2px solid #262b38;
+    padding-top:1.1rem;
+  }
+  .panel--philosophy.revealed .phil-step{ opacity:1; transform:translateY(0); }
+  .panel--philosophy.revealed .phil-step:nth-child(2){ transition-delay:.12s; }
+  .panel--philosophy.revealed .phil-step:nth-child(3){ transition-delay:.24s; }
+  .phil-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.8rem;
+    letter-spacing:.1em;
+    color:var(--accent);
+  }
+  .phil-step h3{ font-size:1.5rem; margin:.7rem 0 .7rem; font-weight:700; }
+  .phil-step p{ color:#9aa8c2; font-size:.95rem; line-height:1.65; max-width:300px; }
+  @media (max-width:820px){ .phil-grid{ grid-template-columns:1fr; gap:1.8rem; } }
+
+  /* ===================== PIXEL PANEL ===================== */
+  .panel--pixel{
+    background: linear-gradient(180deg, #0d1b2e 0%, #142841 100%);
+    color:#eef3fb;
+    justify-content:flex-start;
+  }
+  .panel--pixel::after{
+    content:"";
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0px, rgba(255,255,255,.035) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+  }
+  .panel--pixel .eyebrow{ color:#4fe3c1; }
+  .pixel-headline{
+    font-family:'Press Start 2P', monospace;
+    font-size:clamp(1.3rem, 3.6vw, 2.4rem);
+    line-height:1.7;
+    color:#ffd23f;
+    text-shadow: 3px 3px 0 #ff5a5f;
+  }
+  .panel--pixel p{ font-size:1rem; color:#c7d4ea; margin-top:1.5rem; max-width:520px; line-height:1.7; }
+  .panel--pixel .feature-list li{ font-family:'JetBrains Mono', monospace; font-size:.82rem; color:#9fe6d8; }
+  .panel--pixel .feature-list li::before{ content:"▸"; color:#ff5a5f; }
+  .panel--pixel .cta{ color:#0d1b2e; background:#ffd23f; border-color:#ffd23f; font-family:'JetBrains Mono', monospace; }
+  .panel--pixel .cta:hover{ background:#4fe3c1; border-color:#4fe3c1; }
+
+  .pixel-sprite{
+    position:absolute;
+    right:6vw; top:50%; transform:translateY(-50%);
+    display:grid;
+    grid-template-columns: repeat(9, 8px);
+    grid-template-rows: repeat(9, 8px);
+    gap:1px;
+    opacity:.9;
+  }
+  @media (max-width:900px){ .pixel-sprite{ display:none; } }
+  .pixel-sprite i{ display:block; }
+
+  /* pixel dissolve reveal tiles */
+  .tile-cover{
+    position:absolute; inset:0; z-index:5;
+    display:grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    pointer-events:none;
+  }
+  .tile-cover i{
+    background:#0d1b2e;
+    transition: opacity .45s ease, transform .45s ease;
+  }
+  .panel--pixel.revealed .tile-cover i{ opacity:0; transform:scale(1.4); }
+  .tile-cover i:nth-child(1){ transition-delay:.02s;} .tile-cover i:nth-child(2){ transition-delay:.05s;}
+  .tile-cover i:nth-child(3){ transition-delay:.08s;} .tile-cover i:nth-child(4){ transition-delay:.11s;}
+  .tile-cover i:nth-child(5){ transition-delay:.14s;} .tile-cover i:nth-child(6){ transition-delay:.17s;}
+  .tile-cover i:nth-child(7){ transition-delay:.2s;} .tile-cover i:nth-child(8){ transition-delay:.23s;}
+  .tile-cover i:nth-child(n+9){ transition-delay:.26s;}
+  .tile-cover i:nth-child(n+17){ transition-delay:.32s;}
+  .tile-cover i:nth-child(n+25){ transition-delay:.38s;}
+  .tile-cover i:nth-child(n+33){ transition-delay:.44s;}
+
+  /* ===================== EDITORIAL PANEL ===================== */
+  .panel--editorial{
+    background:#f2ede1;
+    color:#171310;
+    align-items:flex-end;
+  }
+  .panel--editorial .panel-inner{
+    max-width:900px;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path .9s cubic-bezier(.77,0,.18,1);
+  }
+  .panel--editorial.revealed .panel-inner{ clip-path: inset(0 0% 0 0); }
+  .panel--editorial .eyebrow{ color:#ff4d1c; }
+  .editorial-headline{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(2.4rem, 6.4vw, 5rem);
+    line-height:.98;
+    letter-spacing:-.01em;
+  }
+  .editorial-headline em{ font-style:normal; color:#ff4d1c; }
+  .panel--editorial p{ font-size:1.05rem; margin-top:1.6rem; max-width:520px; line-height:1.65; color:#3a332a; }
+  .panel--editorial .feature-list{ flex-direction:row; flex-wrap:wrap; gap:.6rem 1.2rem; margin-top:2rem; }
+  .panel--editorial .feature-list li{ font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; border-bottom:2px solid #171310; padding-bottom:.15rem; }
+  .panel--editorial .feature-list li::before{ content:none; }
+  .panel--editorial .cta{ background:#171310; color:#f2ede1; border-color:#171310; }
+  .panel--editorial .cta:hover{ background:#ff4d1c; border-color:#ff4d1c; color:#171310; }
+  .editorial-num{
+    position:absolute; top:6vh; right:6vw;
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(4rem, 12vw, 9rem);
+    color:rgba(23,19,16,.07);
+    line-height:1;
+  }
+
+  /* ===================== CORPORATE PANEL ===================== */
+  .panel--corporate{
+    background:#ffffff;
+    color:#1c2733;
+  }
+  .panel--corporate .panel-inner{
+    opacity:0; transform:translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .panel--corporate.revealed .panel-inner{ opacity:1; transform:translateY(0); }
+  .panel--corporate .eyebrow{ color:#1b4f9c; font-family: Arial, Helvetica, sans-serif; letter-spacing:.08em; }
+  .corporate-headline{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:700;
+    font-size:clamp(2rem, 4.6vw, 3.2rem);
+    color:#1b4f9c;
+    line-height:1.2;
+  }
+  .panel--corporate p{ font-family: Arial, Helvetica, sans-serif; font-size:1rem; color:#5b6b7c; margin-top:1.3rem; max-width:540px; line-height:1.7; }
+  .panel--corporate .note{ font-size:.82rem; color:#9aa7b5; font-style:italic; margin-top:.9rem; }
+  .panel--corporate .feature-list{ margin-top:1.8rem; }
+  .panel--corporate .feature-list li{ font-family: Arial, Helvetica, sans-serif; color:#2c3a49; }
+  .panel--corporate .feature-list li::before{ content:"✓"; color:#1b4f9c; font-weight:700; }
+  .panel--corporate .cta{ background:#1b4f9c; color:#fff; border-color:#1b4f9c; border-radius:4px; font-family: Arial, Helvetica, sans-serif; }
+  .panel--corporate .cta:hover{ background:#163f7d; }
+  .corp-card{
+    position:absolute; right:6vw; top:50%; transform:translateY(-50%);
+    width:280px; background:#eef1f5; border-radius:10px; padding:1.4rem;
+    box-shadow:0 20px 40px rgba(27,79,156,.12);
+  }
+  .corp-card .bar{ height:10px; background:#dde4ec; border-radius:5px; margin-bottom:.6rem; }
+  .corp-card .bar.short{ width:60%; }
+  .corp-card .bar.accent{ background:#1b4f9c; width:40%; height:26px; margin-top:1rem; }
+  @media (max-width:900px){ .corp-card{ display:none; } }
+
+  /* ===================== TERMINAL PANEL ===================== */
+  .panel--terminal{
+    background:#05070a;
+    color:#c9f7dc;
+  }
+  .panel--terminal .eyebrow{ color:#39ff88; }
+  .terminal-window{
+    max-width:640px;
+    border:1px solid #1f8a53;
+    border-radius:8px;
+    background:#070b09;
+    box-shadow:0 0 40px rgba(57,255,136,.08);
+    overflow:hidden;
+  }
+  .terminal-bar{
+    display:flex; gap:.4rem;
+    padding:.6rem .8rem;
+    background:#0c120e;
+    border-bottom:1px solid #12331f;
+  }
+  .terminal-bar i{ width:10px; height:10px; border-radius:50%; background:#1f8a53; }
+  .terminal-body{ padding:1.4rem 1.2rem; font-family:'JetBrains Mono', monospace; font-size:.92rem; line-height:1.9; min-height:210px; }
+  .terminal-body .line{ opacity:0; white-space:pre-wrap; }
+  .terminal-body .prompt{ color:#39ff88; }
+  .cursor{ display:inline-block; width:8px; height:1em; background:#39ff88; vertical-align:text-bottom; animation:blink 1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .panel--terminal p{ margin-top:1.6rem; max-width:540px; color:#9fd8b5; line-height:1.7; font-size:.98rem; }
+  .panel--terminal .cta{ background:#39ff88; color:#05070a; border-color:#39ff88; font-family:'JetBrains Mono', monospace; margin-top:1.8rem; }
+  .panel--terminal .cta:hover{ background:transparent; color:#39ff88; }
+
+  /* ===================== CONTACT ===================== */
+  .panel--contact{
+    background: linear-gradient(160deg, #0a0a0f 0%, #10131c 100%);
+    justify-content:center;
+    text-align:center;
+    flex-direction:column;
+  }
+  .panel--contact .panel-inner{ max-width:640px; margin:0 auto; }
+  .contact-headline{
+    font-size:clamp(2.2rem, 6vw, 4rem);
+    font-weight:700;
+    line-height:1.1;
+  }
+  .contact-headline .a{ font-family:'Press Start 2P', monospace; font-size:.55em; color:#ff5a5f; }
+  .contact-headline .b{ font-family:'Archivo Black', sans-serif; color:#ff4d1c; }
+  .contact-headline .c{ font-family: Arial, Helvetica, sans-serif; color:#4d8fe0; }
+  .contact-headline .d{ font-family:'JetBrains Mono', monospace; color:#39ff88; }
+  .panel--contact p{ margin-top:1.4rem; color:#9aa8c2; font-size:1.05rem; }
+  .contact-links{ margin-top:2.4rem; display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; }
+  .contact-links a{
+    padding:.9rem 1.7rem;
+    border:2px solid #2a2f3d;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.85rem;
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .contact-links a:hover{ border-color:var(--accent); transform:translateY(-3px); }
+  .foot{
+    margin-top:4rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.7rem;
+    color:#4a5266;
+    letter-spacing:.06em;
+  }
+
+  .claim-box{
+    margin-top:2.6rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.4rem;
+  }
+  .process-strip{
+    display:flex;
+    justify-content:center;
+    gap:2.4rem;
+    flex-wrap:wrap;
+    margin-top:2.2rem;
+    padding-top:2.2rem;
+    border-top:1px solid #262b38;
+  }
+  .process-strip div{ text-align:left; max-width:180px; }
+  .process-strip .p-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.75rem;
+    color:var(--accent);
+    letter-spacing:.08em;
+  }
+  .process-strip p{ margin-top:.4rem; font-size:.85rem; color:#9aa8c2; line-height:1.55; }
+  .claim-cta{ margin-top:0; }
+
+  /* divider strip between panels */
+  .divider{
+    position:absolute; left:0; bottom:0; height:4px; width:0%;
+    background:var(--accent);
+    transition: width 1s ease, background .4s ease;
+  }
+  .panel.revealed .divider{ width:100%; }
+
+</style>
+</head>
+<body>
+
+  <div class="brandmark"><span class="dot"></span> ATELIER</div>
+
+  <nav class="side-nav" aria-label="Section navigation">
+    <a href="#intro" data-style="#4fe3c1"><span>Intro</span></a>
+    <a href="#philosophy" data-style="#eef3fb"><span>Philosophy</span></a>
+    <a href="#pixel" data-style="#ffd23f"><span>Playful / Experimental</span></a>
+    <a href="#editorial" data-style="#ff4d1c"><span>Editorial / Artistic</span></a>
+    <a href="#corporate" data-style="#1b4f9c"><span>Professional / Business</span></a>
+    <a href="#terminal" data-style="#39ff88"><span>Technical / Developer</span></a>
+    <a href="#contact" data-style="#9aa8c2"><span>Contact</span></a>
+  </nav>
+
+  <div class="channel"><span id="channelNum">00 / 06</span><span id="channelName">INTRO</span></div>
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="panel panel--intro" id="intro" data-name="INTRO">
+    <div class="panel-inner">
+      <h1 class="intro-headline">I design like <span class="swap-word" id="swapWord">a different studio</span> every time.</h1>
+      <p class="intro-sub">ATELIER is an independent design studio. Every project starts from zero — shaped entirely around the client, never pulled from a template.</p>
+      <div class="swatches">
+        <span style="background:#ffd23f"></span>
+        <span style="background:#ff4d1c"></span>
+        <span style="background:#1b4f9c"></span>
+        <span style="background:#39ff88"></span>
+        <span class="swatch-more">+∞</span>
+      </div>
+      <div class="scroll-hint">SCROLL TO SEE THE RANGE ↓</div>
+    </div>
+  </section>
+
+  <!-- ===================== PHILOSOPHY ===================== -->
+  <section class="panel panel--philosophy" id="philosophy" data-name="PHILOSOPHY">
+    <div class="panel-inner phil-inner">
+      <span class="eyebrow">The philosophy</span>
+      <h2 class="phil-headline">Create. Share. Showcase.</h2>
+      <div class="phil-grid">
+        <div class="phil-step">
+          <span class="phil-num">01 — Create</span>
+          <h3>Create</h3>
+          <p>I craft a website around the client's identity — their profession, their story, their vision. Never a generic brief.</p>
+        </div>
+        <div class="phil-step">
+          <span class="phil-num">02 — Share</span>
+          <h3>Share</h3>
+          <p>The client walks away with a professional online presence — ready to send to clients, collaborators, and press.</p>
+        </div>
+        <div class="phil-step">
+          <span class="phil-num">03 — Showcase</span>
+          <h3>Showcase</h3>
+          <p>Their work, story and achievements become the focus. The site exists to showcase them — not the other way around.</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider" style="background:#eef3fb"></div>
+  </section>
+
+  <!-- ===================== PIXEL ===================== -->
+  <section class="panel panel--pixel" id="pixel" data-name="PLAYFUL / EXPERIMENTAL">
+    <div class="tile-cover" id="pixelTiles"></div>
+    <div class="panel-inner">
+      <span class="eyebrow">Capability 01 — Playful / Experimental</span>
+      <h2 class="pixel-headline">RETRO.<br>PLAYFUL.<br>UNMISTAKABLE.</h2>
+      <p>One visual language I design in — built for clients whose work is playful and interactive: indie developers, musicians, illustrators, game designers. Nothing here is a template. Every element is designed and coded by hand.</p>
+      <ul class="feature-list">
+        <li>Designed and coded by hand</li>
+        <li>8-bit motion &amp; sprite-style UI</li>
+        <li>Built around the client's brand</li>
+      </ul>
+      <a href="#contact" class="cta">START A PROJECT →</a>
+    </div>
+    <div class="pixel-sprite" id="pixelSprite"></div>
+    <div class="divider"></div>
+  </section>
+
+  <!-- ===================== EDITORIAL ===================== -->
+  <section class="panel panel--editorial" id="editorial" data-name="EDITORIAL / ARTISTIC">
+    <div class="editorial-num">02</div>
+    <div class="panel-inner">
+      <span class="eyebrow">Capability 02 — Editorial / Artistic</span>
+      <h2 class="editorial-headline">Bold type.<br>Confident <em>layout.</em></h2>
+      <p>Another language I work in — for clients who lead with a point of view: photographers, writers, designers, artists. Big type, asymmetric grids, color used like punctuation. Shaped entirely around their story.</p>
+      <ul class="feature-list">
+        <li>Art-directed by hand</li>
+        <li>Custom type pairing per client</li>
+        <li>Shaped around the client's story</li>
+      </ul>
+      <a href="#contact" class="cta">Start a project →</a>
+    </div>
+    <div class="divider" style="background:#ff4d1c"></div>
+  </section>
+
+  <!-- ===================== CORPORATE ===================== -->
+  <section class="panel panel--corporate" id="corporate" data-name="PROFESSIONAL / BUSINESS">
+    <div class="panel-inner">
+      <span class="eyebrow">Capability 03 — Professional / Business</span>
+      <h2 class="corporate-headline">Clean. Trustworthy.<br>On brand.</h2>
+      <p>A quieter language — for consultants, founders, and specialists who need instant credibility. Sometimes the most convincing design decision is the one nobody notices.</p>
+      <p class="note">(Yes — this transition is intentionally the least flashy one. Trust is the point.)</p>
+      <ul class="feature-list">
+        <li>Accessible by default</li>
+        <li>Fast, no matter the content</li>
+        <li>Built to earn trust</li>
+      </ul>
+      <a href="#contact" class="cta">Start a project →</a>
+    </div>
+    <div class="corp-card">
+      <div class="bar"></div>
+      <div class="bar short"></div>
+      <div class="bar"></div>
+      <div class="bar accent"></div>
+    </div>
+    <div class="divider" style="background:#1b4f9c"></div>
+  </section>
+
+  <!-- ===================== TERMINAL ===================== -->
+  <section class="panel panel--terminal" id="terminal" data-name="TECHNICAL / DEVELOPER">
+    <div class="panel-inner">
+      <span class="eyebrow">Capability 04 — Technical / Developer</span>
+      <div class="terminal-window">
+        <div class="terminal-bar"><i></i><i></i><i></i></div>
+        <div class="terminal-body" id="termBody">
+          <div class="line" data-text="$ whoami"></div>
+          <div class="line" data-text="> designer & developer"></div>
+          <div class="line" data-text="$ build --for=this-client"></div>
+          <div class="line" data-text="$ deploy --unique=true"></div>
+          <div class="line" data-text="> ready<span class='cursor'></span>"></div>
+        </div>
+      </div>
+      <p>A fourth language I work in — for engineers, open-source maintainers, and technical founders. Dark mode native, monospace-first, built to respect the keyboard.</p>
+      <a href="#contact" class="cta">$ start_project</a>
+    </div>
+    <div class="divider" style="background:#39ff88"></div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="panel panel--contact" id="contact" data-name="CONTACT">
+    <div class="panel-inner">
+      <h2 class="contact-headline">
+        READY TO <span class="a">BUILD</span><br>
+        <span class="b">YOURS</span><span class="c">?</span><span class="d">_</span>
+      </h2>
+      <p>Every project starts with a conversation — your profession, your story, your vision. From there I design and build a website that's entirely yours.</p>
+      <div class="claim-box">
+        <a href="mailto:hello@atelierstudio.com" class="cta claim-cta">Start a project →</a>
+        <div class="contact-links">
+          <a href="#">View selected work →</a>
+        </div>
+      </div>
+      <div class="process-strip">
+        <div><span class="p-num">01</span><p>You share your profession, needs and vision.</p></div>
+        <div><span class="p-num">02</span><p>I design and develop a custom website around it.</p></div>
+        <div><span class="p-num">03</span><p>You launch with a unique digital presence.</p></div>
+      </div>
+      <div class="foot">ATELIER — create. share. showcase.</div>
+    </div>
+  </section>
+
+<script>
+  // ---- generate pixel sprite (small blocky icon) ----
+  const spriteMap = [
+    0,0,1,1,1,1,1,0,0,
+    0,1,1,2,2,2,1,1,0,
+    1,1,2,3,2,3,2,1,1,
+    1,2,2,2,2,2,2,2,1,
+    1,2,2,1,1,1,2,2,1,
+    0,1,2,2,2,2,2,1,0,
+    0,0,1,2,2,2,1,0,0,
+    0,0,1,0,1,0,1,0,0,
+    0,1,1,0,0,0,1,1,0
+  ];
+  const colors = { 0:'transparent', 1:'#ffd23f', 2:'#ff5a5f', 3:'#4fe3c1' };
+  const spriteEl = document.getElementById('pixelSprite');
+  spriteMap.forEach(v=>{
+    const i = document.createElement('i');
+    i.style.background = colors[v];
+    spriteEl.appendChild(i);
+  });
+
+  // ---- pixel dissolve tile cover ----
+  const tileCover = document.getElementById('pixelTiles');
+  for(let i=0;i<40;i++){ tileCover.appendChild(document.createElement('i')); }
+
+  // ---- intro word style-cycling ----
+  const swapWord = document.getElementById('swapWord');
+  const styles = [
+    { text:'a different studio', cls:'' },
+    { text:'A PIXEL STUDIO', cls:'f-pixel' },
+    { text:'AN EDITORIAL HOUSE', cls:'f-editorial' },
+    { text:'a corporate firm', cls:'f-corporate' },
+    { text:'a dev shop', cls:'f-terminal' }
+  ];
+  let si = 0;
+  setInterval(()=>{
+    si = (si+1) % styles.length;
+    swapWord.className = 'swap-word ' + styles[si].cls;
+    swapWord.textContent = styles[si].text;
+  }, 1500);
+
+  // ---- terminal typewriter, triggered once ----
+  let termPlayed = false;
+  function playTerminal(){
+    if(termPlayed) return;
+    termPlayed = true;
+    const lines = document.querySelectorAll('#termBody .line');
+    lines.forEach((line, idx)=>{
+      const full = line.getAttribute('data-text');
+      setTimeout(()=>{
+        line.style.opacity = 1;
+        let i = 0;
+        const isLast = idx === lines.length - 1;
+        const plain = isLast ? full.replace(/<span.*<\/span>/,'') : full;
+        const interval = setInterval(()=>{
+          i++;
+          line.textContent = plain.slice(0,i);
+          if(i >= plain.length){
+            clearInterval(interval);
+            if(isLast){ line.innerHTML = full; }
+          }
+        }, 22);
+      }, idx * 480);
+    });
+  }
+
+  // ---- reveal-on-scroll observer (fires once per panel) ----
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealed');
+        if(entry.target.id === 'terminal'){ playTerminal(); }
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.35 });
+  document.querySelectorAll('.panel').forEach(p=>revealObserver.observe(p));
+
+  // ---- nav + accent-color + channel indicator observer ----
+  const navLinks = document.querySelectorAll('.side-nav a');
+  const panels = document.querySelectorAll('.panel');
+  const channelNum = document.getElementById('channelNum');
+  const channelName = document.getElementById('channelName');
+  const root = document.documentElement;
+
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && entry.intersectionRatio > 0.55){
+        const idx = Array.from(panels).indexOf(entry.target);
+        navLinks.forEach(l=>l.classList.remove('active'));
+        navLinks[idx].classList.add('active');
+        root.style.setProperty('--accent', navLinks[idx].dataset.style);
+        channelNum.textContent = String(idx).padStart(2,'0') + ' / 06';
+        channelName.textContent = entry.target.dataset.name;
+      }
+    });
+  }, { threshold:[0.55] });
+  panels.forEach(p=>navObserver.observe(p));
+</script>
+</body>
+</html>

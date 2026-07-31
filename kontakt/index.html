@@ -100,7 +100,18 @@
             <div class="form-actions">
                 <button type="submit" class="btn">Wyślij wiadomość</button>
             </div>
-            <p class="char-counter">Wysyłając wiadomość, akceptujesz <a href="/regulamin/">Regulamin</a>. Zasady przetwarzania danych opisuje <a href="/polityka-prywatnosci/">Polityka prywatności</a>. Formularz obsługuje usługa Formspree.</p>
+            <label class="consent-checkbox">
+                <input type="checkbox" name="consent" required>
+                <span>
+                    Akceptuję <a href="/regulamin/" target="_blank">Regulamin</a>.
+                    Zasady przetwarzania danych opisuje
+                    <a href="/polityka-prywatnosci/" target="_blank">Polityka prywatności</a>.
+                </span>
+            </label>
+
+            <p class="form-footnote">
+                Formularz obsługuje usługa Formspree.
+            </p>
         </form>
     </div>
 </main>

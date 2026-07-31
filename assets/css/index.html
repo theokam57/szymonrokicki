@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>okam — Custom Digital Experiences</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+   RESET & VARIABLES
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --text-primary: #eef3fb;
+  --text-secondary: #8b8f98;
+  --accent: #4fe3c1;
+  
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --transition-base: 0.3s ease-out;
+  --transition-slow: 0.6s ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* ========================================
+   SECTIONS / PANELS
+   ======================================== */
+
+.panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 4rem;
+  position: relative;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: 4rem 2rem;
+    min-height: auto;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.panel-content {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================================
+   SIDE NAVIGATION
+   ======================================== */
+
+.side-nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .side-nav {
+    display: none;
+  }
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(142, 143, 152, 0.3);
+  border: 1px solid rgba(142, 143, 152, 0.5);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: block;
+}
+
+.nav-dot:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.3);
+}
+
+.nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(79, 227, 193, 0.3);
+}
+
+/* ========================================
+   MOBILE HEADER
+   ======================================== */
+
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 49;
+  border-bottom: 1px solid rgba(79, 227, 193, 0.1);
+}
+
+@media (max-width: 1024px) {
+  .mobile-header {
+    display: flex;
+  }
+}
+
+.mobile-header-inner {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-base);
+}
+
+/* ========================================
+   SECTION HEADER
+   ======================================== */
+
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.panel--hero {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #0d1420 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  position: relative;
+}
+
+.hero-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.logo-large {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  animation: fadeInScale 0.8s ease-out;
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.hero-main {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hero-headline {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.headline-word {
+  display: block;
+  animation: slideUp 0.7s ease-out backwards;
+}
+
+.headline-word:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.headline-word:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  animation: fadeIn 0.8s ease-out 0.5s both;
+}
+
+.hero-accent {
+  position: absolute;
+  top: 10%;
+  right: 8%;
+  width: 300px;
+  height: 300px;
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .hero-accent {
+    width: 200px;
+    height: 200px;
+    top: 15%;
+    right: 5%;
+  }
+}
+
+.accent-shape {
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+}
+
+.scroll-hint {
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.7s both;
+}
+
+.scroll-hint span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  animation: bob 2s ease-in-out infinite;
+}
+
+/* ========================================
+   PHILOSOPHY SECTION
+   ======================================== */
+
+.panel--philosophy {
+  background-color: var(--bg-primary);
+  padding: 8rem 4rem;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 1024px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.philosophy-card {
+  padding: 2rem;
+  border: 1px solid rgba(79, 227, 193, 0.1);
+  background: rgba(79, 227, 193, 0.02);
+  border-radius: 8px;
+  transition: all var(--transition-base);
+}
+
+.philosophy-card:hover {
+  border-color: var(--accent);
+  background: rgba(79, 227, 193, 0.05);
+  transform: translateY(-4px);
+}
+
+.philosophy-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.philosophy-card p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ========================================
+   PROCESS SECTION
+   ======================================== */
+
+.panel--process {
+  background-color: var(--bg-primary);
+  padding: 8rem 4rem;
+}
+
+.process-timeline {
+  margin-top: 4rem;
+  position: relative;
+  max-width: 800px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.timeline-number {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 80px;
+  text-align: center;
+}
+
+.timeline-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 40px;
+  top: 80px;
+  width: 2px;
+  height: calc(100% - 80px);
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  pointer-events: none;
+}
+
+.timeline-note {
+  margin-top: 3rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* ========================================
+   WHY DIFFERENT SECTION
+   ======================================== */
+
+.panel--why {
+  background-color: var(--bg-secondary);
+  padding: 8rem 4rem;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.why-card {
+  padding: 2rem;
+  border-left: 2px solid var(--accent);
+  transition: all var(--transition-base);
+}
+
+.why-card:hover {
+  padding-left: 2.5rem;
+}
+
+.why-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.why-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+
+.panel--about {
+  background-color: var(--bg-primary);
+  padding: 8rem 4rem;
+  text-align: center;
+}
+
+.about-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+/* ========================================
+   WORK SECTION
+   ======================================== */
+
+.panel--work {
+  background-color: var(--bg-secondary);
+  padding: 8rem 4rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 1024px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.work-card {
+  border: 1px solid rgba(79, 227, 193, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(18, 18, 26, 0.5);
+  transition: all var(--transition-base);
+}
+
+.work-card:hover {
+  border-color: var(--accent);
+  background: rgba(79, 227, 193, 0.05);
+  transform: translateY(-8px);
+}
+
+.work-visual {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(79, 227, 193, 0.1), rgba(79, 227, 193, 0.05));
+}
+
+.work-visual-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  transition: transform 0.6s ease-out;
+}
+
+.work-card:hover .work-visual-placeholder {
+  transform: scale(1.05);
+}
+
+.gradient-1 {
+  background: linear-gradient(135deg, #4fe3c1 0%, #2d8b7e 100%);
+}
+
+.gradient-2 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-3 {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-4 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.work-info {
+  padding: 2rem;
+}
+
+.work-category {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+.work-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.work-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   COLLABORATION SECTION
+   ======================================== */
+
+.panel--collaboration {
+  background-color: var(--bg-primary);
+  padding: 8rem 4rem;
+}
+
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 1024px) {
+  .collab-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .collab-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.collab-item {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(79, 227, 193, 0.2);
+  transition: all var(--transition-base);
+}
+
+.collab-item:hover {
+  border-top-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.collab-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.collab-item p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.panel--cta {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1f2e 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 4rem;
+}
+
+.cta-inner {
+  text-align: center;
+  max-width: 700px;
+}
+
+.cta-headline {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.cta-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  z-index: -1;
+  transition: left var(--transition-base);
+}
+
+.cta-button:hover {
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+.cta-button:hover::before {
+  left: 0;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid rgba(79, 227, 193, 0.1);
+  padding: 4rem;
+  margin-top: 6rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+.footer-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.footer-email a {
+  color: var(--accent);
+  font-weight: 600;
+  transition: color var(--transition-base);
+}
+
+.footer-email a:hover {
+  color: var(--text-primary);
+}
+
+.footer-copyright {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Reveal on scroll state */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for cards */
+.reveal-on-scroll:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.reveal-on-scroll:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.reveal-on-scroll:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.reveal-on-scroll:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Print styles */
+@media print {
+  .side-nav,
+  .mobile-header,
+  .scroll-hint {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="side-nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-dot active" data-section="hero" aria-label="Hero"></a>
+    <a href="#philosophy" class="nav-dot" data-section="philosophy" aria-label="Philosophy"></a>
+    <a href="#process" class="nav-dot" data-section="process" aria-label="Process"></a>
+    <a href="#work" class="nav-dot" data-section="work" aria-label="Work"></a>
+    <a href="#contact" class="nav-dot" data-section="contact" aria-label="Contact"></a>
+  </nav>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-inner">
+      <div class="logo">okam</div>
+      <div class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: HERO -->
+  <section class="panel panel--hero" id="hero">
+    <div class="panel-content">
+      <div class="hero-header">
+        <div class="logo-large">okam</div>
+        <p class="hero-subtitle">Independent digital creator</p>
+      </div>
+
+      <div class="hero-main">
+        <h1 class="hero-headline">
+          <span class="headline-word">One creator.</span>
+          <span class="headline-word">Infinite directions.</span>
+        </h1>
+
+        <p class="hero-description">
+          I design and build custom digital experiences.<br>
+          No templates. No compromises.<br>
+          Only something created around you.
+        </p>
+      </div>
+
+      <div class="hero-accent">
+        <svg viewBox="0 0 100 100" class="accent-shape">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+        </svg>
+      </div>
+
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow">↓</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: PHILOSOPHY -->
+  <section class="panel panel--philosophy" id="philosophy">
+    <div class="panel-content">
+      <div class="section-header">
+        <p class="eyebrow">THE PHILOSOPHY</p>
+        <h2 class="section-title">Create.<br>Share.<br>Showcase.</h2>
+      </div>
+
+      <div class="philosophy-grid">
+        <div class="philosophy-card reveal-on-scroll">
+          <h3>Create</h3>
+          <p>No template discovery. No choosing from predefined styles. A conversation about who you are, what you do, and what makes you different.</p>
+        </div>
+
+        <div class="philosophy-card reveal-on-scroll">
+          <h3>Share</h3>
+          <p>You get a professional digital home. A place you're proud to send to clients, partners and everyone who matters.</p>
+        </div>
+
+        <div class="philosophy-card reveal-on-scroll">
+          <h3>Showcase</h3>
+          <p>The website exists for your work. You are the hero. The website is the stage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PROCESS -->
+  <section class="panel panel--process" id="process">
+    <div class="panel-content">
+      <div class="section-header">
+        <p class="eyebrow">THE APPROACH</p>
+        <h2 class="section-title">From conversation to launch.</h2>
+      </div>
+
+      <div class="process-timeline">
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-number">01</div>
+          <div class="timeline-content">
+            <h3>Story</h3>
+            <p>We talk about your vision. Not a questionnaire. A real conversation.</p>
+          </div>
+        </div>
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-number">02</div>
+          <div class="timeline-content">
+            <h3>Create</h3>
+            <p>I design and build something shaped around you.</p>
+          </div>
+        </div>
+
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-number">03</div>
+          <div class="timeline-content">
+            <h3>Launch</h3>
+            <p>Your domain. Your audience. Your digital home.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="timeline-note">Usually around 7 days depending on complexity.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: WHY DIFFERENT -->
+  <section class="panel panel--why" id="why">
+    <div class="panel-content">
+      <div class="section-header">
+        <p class="eyebrow">WHY WORK WITH ME</p>
+        <h2 class="section-title">What's different.</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal-on-scroll">
+          <h3>Direct Collaboration</h3>
+          <p>You work directly with the creator. No middlemen. No unnecessary communication layers.</p>
+        </div>
+
+        <div class="why-card reveal-on-scroll">
+          <h3>Smart Technology</h3>
+          <p>Technology chosen for your needs. Not trends. Not unnecessary costs.</p>
+        </div>
+
+        <div class="why-card reveal-on-scroll">
+          <h3>Custom Always</h3>
+          <p>Every project starts from zero. Different story. Different direction.</p>
+        </div>
+
+        <div class="why-card reveal-on-scroll">
+          <h3>Global Ready</h3>
+          <p>Professional collaboration worldwide. PLN · EUR · USD · GBP</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: ABOUT CREATOR -->
+  <section class="panel panel--about" id="about">
+    <div class="panel-content">
+      <div class="section-header">
+        <h2 class="section-title">Behind every project.</h2>
+      </div>
+
+      <div class="about-content reveal-on-scroll">
+        <p>I believe websites should feel like places. Digital spaces that represent people, ideas and communities. I combine design, technology and storytelling to create experiences that feel unmistakably yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: SELECTED WORK -->
+  <section class="panel panel--work" id="work">
+    <div class="panel-content">
+      <div class="section-header">
+        <p class="eyebrow">SELECTED WORK</p>
+        <h2 class="section-title">Different worlds.<br>One creator.</h2>
+      </div>
+
+      <div class="work-grid">
+        <div class="work-card reveal-on-scroll">
+          <div class="work-visual">
+            <div class="work-visual-placeholder gradient-1"></div>
+          </div>
+          <div class="work-info">
+            <p class="work-category">For an artist</p>
+            <h3>Portfolio meets gallery.</h3>
+            <p class="work-description">A digital space where creativity becomes the main character.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal-on-scroll">
+          <div class="work-visual">
+            <div class="work-visual-placeholder gradient-2"></div>
+          </div>
+          <div class="work-info">
+            <p class="work-category">For a startup</p>
+            <h3>Technology deserves a story.</h3>
+            <p class="work-description">Clean interface focused on clarity and trust.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal-on-scroll">
+          <div class="work-visual">
+            <div class="work-visual-placeholder gradient-3"></div>
+          </div>
+          <div class="work-info">
+            <p class="work-category">For a community</p>
+            <h3>A place where people connect.</h3>
+            <p class="work-description">Warm, accessible and built around identity.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal-on-scroll">
+          <div class="work-visual">
+            <div class="work-visual-placeholder gradient-4"></div>
+          </div>
+          <div class="work-info">
+            <p class="work-category">For a creator</p>
+            <h3>Vision deserves a stage.</h3>
+            <p class="work-description">An immersive experience built around storytelling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: COLLABORATION -->
+  <section class="panel panel--collaboration" id="collaboration">
+    <div class="panel-content">
+      <div class="section-header">
+        <p class="eyebrow">WORKING TOGETHER</p>
+        <h2 class="section-title">Simple process.<br>Professional results.</h2>
+      </div>
+
+      <div class="collab-grid">
+        <div class="collab-item reveal-on-scroll">
+          <h3>Agreement</h3>
+          <p>Secure freelance agreement</p>
+        </div>
+
+        <div class="collab-item reveal-on-scroll">
+          <h3>Timeline</h3>
+          <p>Clear deadlines</p>
+        </div>
+
+        <div class="collab-item reveal-on-scroll">
+          <h3>Communication</h3>
+          <p>Direct updates</p>
+        </div>
+
+        <div class="collab-item reveal-on-scroll">
+          <h3>Ownership</h3>
+          <p>You own your website</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FINAL CTA -->
+  <section class="panel panel--cta" id="contact">
+    <div class="panel-content">
+      <div class="cta-inner reveal-on-scroll">
+        <h2 class="cta-headline">Your brand deserves a home<br>that's unmistakably yours.</h2>
+        <p class="cta-description">Every project starts with a conversation.</p>
+        <a href="mailto:hello@okamdev.com" class="cta-button">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">okam</div>
+        <p class="footer-tagline">Create. Share. Showcase.</p>
+      </div>
+
+      <div class="footer-section">
+        <p class="footer-email"><a href="mailto:hello@okamdev.com">hello@okamdev.com</a></p>
+      </div>
+
+      <div class="footer-section">
+        <p class="footer-copyright">© 2026 okam</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // ========================================
+// REVEAL ON SCROLL OBSERVER
+// ========================================
+
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observe all elements with reveal-on-scroll class
+document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+  observer.observe(element);
+});
+
+// ========================================
+// NAVIGATION UPDATE ON SCROLL
+// ========================================
+
+const navDots = document.querySelectorAll('.nav-dot');
+const panels = document.querySelectorAll('.panel');
+
+const navObserverOptions = {
+  threshold: 0.3
+};
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Remove active class from all dots
+      navDots.forEach(dot => dot.classList.remove('active'));
+      
+      // Add active class to corresponding dot
+      const sectionId = entry.target.id;
+      const correspondingDot = document.querySelector(`.nav-dot[data-section="${sectionId}"]`);
+      
+      if (correspondingDot) {
+        correspondingDot.classList.add('active');
+      }
+    }
+  });
+}, navObserverOptions);
+
+// Observe all panels
+panels.forEach(panel => {
+  navObserver.observe(panel);
+});
+
+// ========================================
+// SMOOTH SCROLL CLICK HANDLERS
+// ========================================
+
+navDots.forEach(dot => {
+  dot.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sectionId = dot.getAttribute('data-section');
+    const section = document.getElementById(sectionId);
+    
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ========================================
+// MOBILE MENU TOGGLE
+// ========================================
+
+const menuToggle = document.querySelector('.menu-toggle');
+const sideNav = document.querySelector('.side-nav');
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    sideNav.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+}
+
+// Close menu when clicking a nav dot on mobile
+navDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    if (sideNav) {
+      sideNav.classList.remove('active');
+      if (menuToggle) {
+        menuToggle.classList.remove('active');
+      }
+    }
+  });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (sideNav && menuToggle && !sideNav.contains(e.target) && !menuToggle.contains(e.target)) {
+    sideNav.classList.remove('active');
+    menuToggle.classList.remove('active');
+  }
+});
+
+// ========================================
+// SCROLL PROGRESS TRACKING
+// ========================================
+
+document.addEventListener('scroll', () => {
+  // Update scroll progress (optional feature for future use)
+  const scrollProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  
+  // Could be used to update a progress bar or other elements
+});
+
+// ========================================
+// PARALLAX EFFECT ON HERO
+// ========================================
+
+const heroSection = document.querySelector('.panel--hero');
+const heroAccent = document.querySelector('.hero-accent');
+
+if (heroAccent) {
+  window.addEventListener('scroll', () => {
+    if (heroSection) {
+      const scrollPosition = window.scrollY;
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      
+      if (scrollPosition < heroBottom) {
+        const offset = scrollPosition * 0.5;
+        heroAccent.style.transform = `translateY(-${offset}px)`;
+      }
+    }
+  });
+}
+
+// ========================================
+// MOUSE TRACKING FOR ACCENT SHAPE (Subtle)
+// ========================================
+
+const accentShape = document.querySelector('.accent-shape');
+
+if (accentShape) {
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    
+    accentShape.style.transform = `translate(${x}px, ${y}px)`;
+  });
+}
+
+// ========================================
+// TIMELINE LINE ANIMATION
+// ========================================
+
+const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineObserverOptions = {
+  threshold: 0.2
+};
+
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      // Add staggered animation
+      entry.target.style.animation = `slideInLeft 0.6s ease-out ${index * 0.15}s both`;
+      timelineObserver.unobserve(entry.target);
+    }
+  });
+}, timelineObserverOptions);
+
+timelineItems.forEach(item => {
+  timelineObserver.observe(item);
+});
+
+// ========================================
+// BUTTON INTERACTION
+// ========================================
+
+const buttons = document.querySelectorAll('.cta-button, .philosophy-card, .why-card, .work-card');
+
+buttons.forEach(button => {
+  button.addEventListener('mouseenter', function() {
+    this.style.transition = 'all 0.3s ease-out';
+  });
+});
+
+// ========================================
+// PERFORMANCE: Debounce scroll events
+// ========================================
+
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+  if (scrollTimeout) {
+    window.cancelAnimationFrame(scrollTimeout);
+  }
+  scrollTimeout = window.requestAnimationFrame(() => {
+    // Scroll logic here if needed
+  });
+}, { passive: true });
+
+// ========================================
+// LAZY LOAD DETECTION (for future images)
+// ========================================
+
+if ('IntersectionObserver' in window) {
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          imageObserver.unobserve(img);
+        }
+      }
+    });
+  });
+
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    imageObserver.observe(img);
+  });
+}
+
+// ========================================
+// PAGE LOAD ANIMATIONS
+// ========================================
+
+window.addEventListener('load', () => {
+  // Ensure smooth entry
+  document.body.classList.add('loaded');
+});
+
+// ========================================
+// PREVENT FLASH OF UNSTYLED CONTENT
+// ========================================
+
+document.documentElement.classList.add('js-enabled');
+
+// ========================================
+// ACCESSIBILITY: Announce navigation changes
+// ========================================
+
+const announcer = document.createElement('div');
+announcer.setAttribute('aria-live', 'polite');
+announcer.setAttribute('aria-atomic', 'true');
+announcer.className = 'sr-only';
+document.body.appendChild(announcer);
+
+navObserver.observe = function(target) {
+  const originalObserve = IntersectionObserver.prototype.observe;
+  return originalObserve.call(navObserver, target);
+};
+
+// ========================================
+// SMOOTH SCROLL POLYFILL (fallback)
+// ========================================
+
+if (!('scrollBehavior' in document.documentElement.style)) {
+  // Fallback for older browsers
+  const links = document.querySelectorAll('a[href^="#"]');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'auto' });
+      }
+    });
+  });
+}
+
+console.log('✨ okam portfolio loaded');
+  </script>
+</body>
+</html>

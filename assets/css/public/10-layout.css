@@ -1,0 +1,101 @@
+/* Shared page rhythm and structural helpers. */
+.section {
+  padding-block: clamp(2.6rem, 5.5vw, 5.5rem);
+}
+
+.section + .section {
+  border-top: 1px solid rgba(231, 201, 114, 0.1);
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(231, 201, 114, 0.14);
+}
+
+.section-heading .medieval-heading-main,
+.section-heading .medieval-heading {
+  margin: 0;
+  padding: 0;
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.6rem);
+}
+
+.section-heading .medieval-heading-main::after,
+.section-heading .medieval-heading::after {
+  display: none;
+}
+
+.section-heading .text-link {
+  flex: 0 0 auto;
+  color: var(--gold-light);
+  font-family: var(--font-head);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.section-heading .text-link::after {
+  content: "\2192";
+}
+
+.history-page,
+.content-page {
+  position: relative;
+  z-index: 1;
+}
+
+.history-page > .container.narrow,
+.content-page:not(.article-page) > .container.narrow {
+  padding-top: clamp(1.5rem, 3vw, 2.6rem);
+  padding-bottom: clamp(2rem, 4vw, 3.6rem);
+}
+
+.summary-grid,
+.article-grid,
+.history-tools-grid,
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+}
+
+.history-tools-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.5rem 0 1.7rem;
+}
+
+.article-list,
+.project-list,
+.timeline-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hero-actions,
+.form-actions,
+.support-actions,
+.article-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.editable-page-content > *:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 620px) {
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+}

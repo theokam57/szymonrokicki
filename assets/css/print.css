@@ -1,0 +1,158 @@
+@page {
+  margin: 18mm 16mm;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    display: block;
+    min-height: 0;
+    overflow: visible;
+    color: #111 !important;
+    background: #fff !important;
+    font: 11pt/1.5 Georgia, "Times New Roman", serif;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .menu-toggle,
+  .no-print,
+  .article-tools,
+  button {
+    display: none !important;
+  }
+
+  main,
+  .history-page,
+  .content-page,
+  .article-page {
+    position: static;
+    display: block;
+    width: auto;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .container,
+  .container.narrow,
+  .article-container,
+  .article-page .article-container {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .site-body :is(h1, h2, h3, h4, h5, h6, p, li, dd, dt, blockquote, figcaption, span, small, time, label) {
+    color: #111 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dd,
+  dt,
+  blockquote,
+  figcaption,
+  .article-content,
+  .article-meta,
+  .article-references,
+  .script-text {
+    color: #111;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    break-after: avoid-page;
+    font-family: Georgia, "Times New Roman", serif;
+    text-shadow: none;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  .article-content a[href^="http"]::after,
+  .article-references a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    color: #444;
+    font-size: 9pt;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+
+  .article-references,
+  .article-figure,
+  figure,
+  table,
+  tr,
+  .history-box,
+  .related-card {
+    break-inside: avoid-page;
+    border-color: #888;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .article-content,
+  .article-content p,
+  .article-content li,
+  .article-lead,
+  .article-references {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .article-content > p:first-of-type::first-letter,
+  .article-content > p.no-drop-cap::first-letter {
+    float: none;
+    margin: 0;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    text-shadow: none;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100% !important;
+    break-inside: avoid-page;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid #888;
+    color: #111;
+  }
+}

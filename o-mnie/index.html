@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Poznaj autora strony, jego zainteresowania historyczne i działania regionalne.">
-    <meta name="keywords" content="Szymon Rokicki, o mnie, historia, Lelów, mediewistyka">
+    <meta name="description" content="Poznaj Szymona Rokickiego, autora strony o historii Lelowa, dawnych mapach, lokalnym dziedzictwie i projektach społecznych.">
     <meta name="author" content="Szymon Rokicki">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#11100d">
     <meta property="og:title" content="O mnie | Szymon Rokicki">
-    <meta property="og:description" content="Poznaj autora strony, jego zainteresowania historyczne i działania regionalne.">
+    <meta property="og:description" content="Poznaj Szymona Rokickiego, autora strony o historii Lelowa, dawnych mapach, lokalnym dziedzictwie i projektach społecznych.">
     <meta property="og:url" content="https://szymonrokicki.pl/o-mnie/">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Szymon Rokicki">
+    <meta property="og:locale" content="pl_PL">
     <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta property="og:image:alt" content="Kim jestem?">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="O mnie | Szymon Rokicki">
-    <meta name="twitter:description" content="Poznaj autora strony, jego zainteresowania historyczne i działania regionalne.">
+    <meta name="twitter:description" content="Poznaj Szymona Rokickiego, autora strony o historii Lelowa, dawnych mapach, lokalnym dziedzictwie i projektach społecznych.">
     <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
     <link rel="canonical" href="https://szymonrokicki.pl/o-mnie/">
     <link rel="manifest" href="/site.webmanifest">
@@ -24,10 +26,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
-    <link rel="preload" href="/assets/css/public.css" as="style">
-    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
-    <link rel="stylesheet" href="/assets/css/public.css">
-    <script src="/assets/js/public.js" defer></script>
+    <link rel="preload" href="/assets/css/public.min.css" as="style">
+    <link rel="stylesheet" href="/assets/css/public.min.css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print">
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://szymonrokicki.pl/#szymon-rokicki","name":"Szymon Rokicki","url":"https://szymonrokicki.pl","image":"https://szymonrokicki.pl/assets/images/social-preview.jpg","knowsAbout":["historia Lelowa","dziedzictwo lokalne","mapy historyczne","źródła regionalne"]},{"@type":"WebSite","@id":"https://szymonrokicki.pl/#website","url":"https://szymonrokicki.pl","name":"Szymon Rokicki","inLanguage":"pl-PL","publisher":{"@id":"https://szymonrokicki.pl/#szymon-rokicki"},"potentialAction":{"@type":"SearchAction","target":"https://szymonrokicki.pl/szukaj/?q={search_term_string}","query-input":"required name=search_term_string"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://szymonrokicki.pl/"},{"@type":"ListItem","position":2,"name":"Kim jestem?","item":"https://szymonrokicki.pl/o-mnie/"}]}</script>
+
+    <script type="module" src="/assets/js/public.js"></script>
     <title>O mnie | Szymon Rokicki</title>
 </head>
 <body class="site-body" data-app-base="">
@@ -36,7 +42,7 @@
     <div class="container header-flex">
         <div class="logo">
             <a href="/" aria-label="Szymon Rokicki">
-                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented" decoding="async" srcset="/assets/images/sr-logo.png 1024w" width="1024" height="1024">
             </a>
         </div>
 
@@ -52,6 +58,7 @@
                 <li><a href="/o-mnie/" class="active">O mnie</a></li>
                 <li><a href="/projekty/" class="">Projekty</a></li>
                 <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/sredniowiecze/" class="">Średniowiecze</a></li>
                 <li><a href="/kontakt/" class="">Kontakt</a></li>
                 <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
             </ul>
@@ -61,10 +68,10 @@
 
 <main id="main-content" class="history-page">
     <div class="container narrow editable-page-content">
-        <h1 class="medieval-heading reveal">Kim jestem?</h1>
-        <p class="script-text initial-letter reveal">Nazywam się Szymon Rokicki. Uczę się w technikum informatycznym, ale od dawna najważniejszą pasją pozostaje dla mnie historia: szczególnie średniowiecze, urbanistyka dawnych miast i dzieje Lelowa.</p>
+        <h1 class="medieval-heading">Kim jestem?</h1>
+        <p class="script-text initial-letter">Nazywam się Szymon Rokicki. Uczę się w technikum informatycznym, ale od dawna najważniejszą pasją pozostaje dla mnie historia: szczególnie średniowiecze, urbanistyka dawnych miast i dzieje Lelowa.</p>
 
-        <div class="history-box reveal">
+        <div class="history-box">
             <h3 class="medieval-heading">Dlaczego Lelów?</h3>
             <p class="script-text">Przede wszystkim dlatego, że jestem lelowiakiem. To właśnie tutaj się wychowałem i spędziłem niemal osiemnaście lat swojego życia. Od początku nauki w technikum informatycznym, gdy ktoś pytał mnie, skąd pochodzę, zawsze z dumą odpowiadałem: „Jestem z Lelowa”. Starałem się podkreślać swoje związki z rodzinną miejscowością przy każdej okazji.
 
@@ -73,17 +80,17 @@
             To właśnie dzięki tej książce jeszcze bardziej zainteresowałem się okresem średniowiecza, ponieważ wtedy ukształtował się nowy Lelów – miasto lokowane na prawie magdeburskim, którego rozwój wywarł trwały wpływ na jego późniejsze losy. Od tego momentu historia Lelowa stała się nie tylko moim zainteresowaniem, lecz także prawdziwą pasją. Staram się ją rozwijać poprzez własne badania, popularyzację wiedzy o historii miasta oraz działalność na rzecz ochrony i upowszechniania lokalnego dziedzictwa.</p>
         </div>
 
-        <!-- <div class="history-box reveal">
+        <!-- <div class="history-box">
             <h3 class="medieval-heading">Kierunek zainteresowań</h3>
             <p class="script-text">Najbardziej interesują mnie lokacje miejskie, zamki królewskie, dawne układy przestrzenne, historia regionalna oraz to, jak małe ośrodki zachowały ślady dużych procesów politycznych i gospodarczych. Lubię zestawiać teksty źródłowe z mapami, rekonstrukcjami i obserwacją terenu.</p>
         </div>
 
-        <div class="history-box reveal">
+        <div class="history-box">
             <h3 class="medieval-heading">Jak pracuję nad stroną</h3>
             <p class="script-text">Strona jest dla mnie cyfrowym notatnikiem i archiwum. Część tekstów ma charakter szkiców, część będzie rozwijana wraz z kolejnymi źródłami. Tam, gdzie pojawiają się hipotezy, staram się oddzielać je od informacji potwierdzonych. Wolę dopisać zastrzeżenie, niż udawać pewność tam, gdzie jej jeszcze nie ma.</p>
         </div>
 
-        <div class="history-box reveal">
+        <div class="history-box">
             <h3 class="medieval-heading">Co chcę rozwijać</h3>
             <ul class="medieval-list">
                 <li>teksty o historii Lelowa i dawnej Małopolski,</li>

@@ -1,0 +1,41 @@
+/* Matching tile indexes for Projekty, Historia Lelowa and Sredniowiecze. */
+.tile-index {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 0.9rem;
+  margin-top: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.tile-index .history-box {
+  min-height: 100%;
+  margin-top: 0;
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border: 1px solid rgba(231, 201, 114, 0.24);
+  border-left: 3px solid rgba(231, 201, 114, 0.52);
+  border-radius: var(--radius);
+  background: rgba(24, 19, 13, 0.72);
+  box-shadow: none;
+}
+
+.tile-index .medieval-heading::after {
+  display: none;
+}
+
+.tile-index .medieval-heading {
+  margin: 0 0 0.45rem;
+  padding: 0;
+  font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+  line-height: 1.3;
+}
+
+.tile-index .script-text {
+  max-width: none;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.tile-index .history-box:hover {
+  border-color: rgba(231, 201, 114, 0.42);
+  background: rgba(31, 24, 15, 0.78);
+}

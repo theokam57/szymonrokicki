@@ -7,16 +7,36 @@ DirectoryIndex index.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Artykuł pod dokładnym adresem bez ukośnika (zgodnym z <link rel="canonical">)
-    # /artykul/lokacja-miasta-na-prawie-magdeburskim  ->  .../index.html
-    RewriteRule ^artykul/([^/.]+)$ artykul/$1/index.html [L]
+    # Stare adresy pozostają dostępne, ale wskazują jedną kanoniczną stronę.
+    RewriteRule ^dawny-lelow-na-mapach/?$ /artykul/dawny-lelow-na-mapach/ [R=301,L]
+    RewriteRule ^lelow-historia-miasta/?$ /artykul/lelow-historia-miasta/ [R=301,L]
+    RewriteRule ^mury-miejskie-lelowa/?$ /artykul/mury-miejskie-lelowa/ [R=301,L]
+    RewriteRule ^rynek-w-lelowie/?$ /artykul/rynek-w-lelowie/ [R=301,L]
+    RewriteRule ^sredniowieczny-lelow/?$ /artykul/sredniowieczny-lelow/ [R=301,L]
+    RewriteRule ^stary-lelow/?$ /artykul/stary-lelow/ [R=301,L]
+    RewriteRule ^zamek-w-lelowie/?$ /artykul/zamek-lelowski/ [R=301,L]
+
+    RewriteRule ^co-zobaczyc-w-lelowie/?$ /historia-lelowa/co-zobaczyc-w-lelowie/ [R=301,L]
+    RewriteRule ^galeria-map/?$ /historia-lelowa/galeria-map/ [R=301,L]
+    RewriteRule ^kalendarium/?$ /historia-lelowa/kalendarium/ [R=301,L]
+    RewriteRule ^mapa-interaktywna/?$ /historia-lelowa/mapa-interaktywna/ [R=301,L]
+    RewriteRule ^mapy-lelowa/?$ /historia-lelowa/galeria-map/ [R=301,L]
+    RewriteRule ^zrodla-do-historii-lelowa/?$ /historia-lelowa/zrodla-i-bibliografia/ [R=301,L]
+    RewriteRule ^zrodla-i-bibliografia/?$ /historia-lelowa/zrodla-i-bibliografia/ [R=301,L]
+
+    RewriteRule ^o-projekcie-historia-lelowa/?$ /projekty/o-projekcie-historia-lelowa/ [R=301,L]
+
+    # Kanoniczne adresy katalogów treści mają końcowy ukośnik.
+    RewriteRule ^(artykul|historia-lelowa|projekty|sredniowiecze)/([^/.]+)$ /$1/$2/ [R=301,L]
 </IfModule>
 
-# Delikatne cache dla statycznych zasobów (opcjonalne)
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresByType text/css "access plus 7 days"
-    ExpiresByType application/javascript "access plus 7 days"
-    ExpiresByType image/jpeg "access plus 30 days"
-    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
 </IfModule>

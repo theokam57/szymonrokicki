@@ -1,0 +1,212 @@
+/* Shared content pages, documents, search and small page-specific layouts. */
+.history-page > .container.narrow > h1.medieval-heading,
+.content-page:not(.article-page) > .container.narrow > h1.medieval-heading {
+  margin-bottom: 1rem;
+  text-align: left;
+  font-size: clamp(1.95rem, 1.35rem + 2vw, 3rem);
+}
+
+.history-page > .container.narrow > h1.medieval-heading::after,
+.content-page:not(.article-page) > .container.narrow > h1.medieval-heading::after {
+  left: 0;
+  width: 7rem;
+  transform: none;
+}
+
+.history-page > .container.narrow > .script-text.initial-letter,
+.content-page:not(.article-page) > .container.narrow > .script-text.initial-letter {
+  max-width: 84ch;
+  margin-bottom: 1.7rem;
+  color: var(--parchment);
+  font-size: clamp(1.1rem, 1rem + 0.3vw, 1.24rem);
+}
+
+.timeline-list .history-box {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.timeline-list .history-box .medieval-heading {
+  margin: 0;
+  padding: 0;
+  color: var(--gold-light);
+}
+
+.timeline-list .history-box .medieval-heading::after {
+  display: none;
+}
+
+.sources-page .history-box a,
+.article-references a {
+  overflow-wrap: anywhere;
+}
+
+.document-page .doc-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.2rem;
+  color: var(--gold-light);
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.document-page .doc-meta {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 1.4rem auto 0.5rem 0;
+  padding: 0.42rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+}
+
+.document-page .doc-meta strong {
+  color: var(--gold-light);
+}
+
+.document-page .history-box {
+  padding: clamp(1.3rem, 3vw, 2rem) clamp(1.2rem, 3vw, 2.1rem);
+}
+
+.document-page .history-box > h2.medieval-heading {
+  margin-bottom: 0.25rem;
+  padding-bottom: 0;
+  border: 0;
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.document-page .history-box > h2.medieval-heading::after {
+  display: none;
+}
+
+.document-page .history-box > h3.medieval-heading {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(231, 201, 114, 0.16);
+  font-size: clamp(1.3rem, 1rem + 1vw, 1.72rem);
+  text-align: left;
+}
+
+.document-page .history-box > h3.medieval-heading::after {
+  display: none;
+}
+
+.document-page .medieval-list .medieval-list {
+  margin-top: 0.5rem;
+  margin-left: 0.6rem;
+}
+
+.document-page .medieval-list li {
+  line-height: 1.7;
+}
+
+.document-page ol.medieval-list {
+  counter-reset: doc-item;
+}
+
+.document-page ol.medieval-list > li {
+  counter-increment: doc-item;
+  padding-left: 2.1rem;
+}
+
+.document-page ol.medieval-list > li::before {
+  content: counter(doc-item) ".";
+  top: 0;
+  width: 1.6rem;
+  height: auto;
+  border: 0;
+  color: var(--gold-light);
+  background: none;
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-align: right;
+  transform: none;
+}
+
+.document-page dl br {
+  display: none;
+}
+
+.document-page dl dt {
+  margin-top: 1.15rem;
+  color: var(--gold-light);
+  font-family: var(--font-head);
+  font-size: 1.02rem;
+}
+
+.document-page dl dt:first-of-type {
+  margin-top: 0;
+}
+
+.document-page dl dd {
+  margin: 0.25rem 0 0 1.1rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid rgba(231, 201, 114, 0.2);
+  color: var(--text-soft);
+}
+
+.site-search {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.site-search label {
+  color: var(--parchment);
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+
+.site-search > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.65rem;
+}
+
+.search-page .related-articles {
+  margin-bottom: 0;
+}
+
+.project-card-public {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.project-card-public img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.error-page {
+  display: grid;
+  align-items: center;
+}
+
+.error-page .form-actions {
+  margin-top: 1.35rem;
+}
+
+@media (max-width: 620px) {
+  .timeline-list .history-box,
+  .project-card-public,
+  .site-search > div {
+    grid-template-columns: 1fr;
+  }
+}

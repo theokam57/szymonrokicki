@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Skontaktuj się w sprawie projektów, współpracy albo historii Lelowa.">
-    <meta name="keywords" content="kontakt, Szymon Rokicki, współpraca, historia, Lelów">
+    <meta name="description" content="Skontaktuj się w sprawie historii Lelowa, źródeł, map, współpracy regionalnej, projektów społecznych lub uwag do strony.">
     <meta name="author" content="Szymon Rokicki">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#11100d">
     <meta property="og:title" content="Kontakt | Szymon Rokicki">
-    <meta property="og:description" content="Skontaktuj się w sprawie projektów, współpracy albo historii Lelowa.">
+    <meta property="og:description" content="Skontaktuj się w sprawie historii Lelowa, źródeł, map, współpracy regionalnej, projektów społecznych lub uwag do strony.">
     <meta property="og:url" content="https://szymonrokicki.pl/kontakt/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Szymon Rokicki">
+    <meta property="og:locale" content="pl_PL">
     <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta property="og:image:alt" content="Skontaktuj się ze mną">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kontakt | Szymon Rokicki">
-    <meta name="twitter:description" content="Skontaktuj się w sprawie projektów, współpracy albo historii Lelowa.">
+    <meta name="twitter:description" content="Skontaktuj się w sprawie historii Lelowa, źródeł, map, współpracy regionalnej, projektów społecznych lub uwag do strony.">
     <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
     <link rel="canonical" href="https://szymonrokicki.pl/kontakt/">
     <link rel="manifest" href="/site.webmanifest">
@@ -24,10 +26,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
-    <link rel="preload" href="/assets/css/public.css" as="style">
-    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
-    <link rel="stylesheet" href="/assets/css/public.css">
-    <script src="/assets/js/public.js" defer></script>
+    <link rel="preload" href="/assets/css/public.min.css" as="style">
+    <link rel="stylesheet" href="/assets/css/public.min.css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print">
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://szymonrokicki.pl/#szymon-rokicki","name":"Szymon Rokicki","url":"https://szymonrokicki.pl","image":"https://szymonrokicki.pl/assets/images/social-preview.jpg","knowsAbout":["historia Lelowa","dziedzictwo lokalne","mapy historyczne","źródła regionalne"]},{"@type":"WebSite","@id":"https://szymonrokicki.pl/#website","url":"https://szymonrokicki.pl","name":"Szymon Rokicki","inLanguage":"pl-PL","publisher":{"@id":"https://szymonrokicki.pl/#szymon-rokicki"},"potentialAction":{"@type":"SearchAction","target":"https://szymonrokicki.pl/szukaj/?q={search_term_string}","query-input":"required name=search_term_string"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://szymonrokicki.pl/"},{"@type":"ListItem","position":2,"name":"Skontaktuj się ze mną","item":"https://szymonrokicki.pl/kontakt/"}]}</script>
+
+    <script type="module" src="/assets/js/public.js"></script>
     <title>Kontakt | Szymon Rokicki</title>
 </head>
 <body class="site-body" data-app-base="">
@@ -36,7 +42,7 @@
     <div class="container header-flex">
         <div class="logo">
             <a href="/" aria-label="Szymon Rokicki">
-                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented" decoding="async" srcset="/assets/images/sr-logo.png 1024w" width="1024" height="1024">
             </a>
         </div>
 
@@ -52,6 +58,7 @@
                 <li><a href="/o-mnie/" class="">O mnie</a></li>
                 <li><a href="/projekty/" class="">Projekty</a></li>
                 <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/sredniowiecze/" class="">Średniowiecze</a></li>
                 <li><a href="/kontakt/" class="active">Kontakt</a></li>
                 <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
             </ul>
@@ -61,15 +68,15 @@
 
 <main id="main-content" class="history-page">
     <div class="container narrow editable-page-content">
-        <h1 class="medieval-heading reveal">Skontaktuj się ze mną</h1><p class="script-text initial-letter reveal">Masz pytanie, propozycję współpracy albo chcesz wymienić się informacjami o historii Lelowa? Skorzystaj z formularza lub linków kontaktowych.</p>
+        <h1 class="medieval-heading">Skontaktuj się ze mną</h1><p class="script-text initial-letter">Masz pytanie, propozycję współpracy albo chcesz wymienić się informacjami o historii Lelowa? Skorzystaj z formularza lub linków kontaktowych.</p>
 
-        <div class="contact-info reveal">
+        <div class="contact-info">
             <p class="script-text"><strong>E-mail:</strong> <a href="mailto:kontakt@szymonrokicki.pl" target="_self" rel="noopener noreferrer">Napisz e-mail</a></p>
             <p class="script-text"><strong>Facebook:</strong> <a href="https://facebook.com/szymon627" target="_blank" rel="noopener noreferrer">Facebook</a></p>
             <p class="script-text"><strong>Instagram:</strong> <a href="https://www.instagram.com/ten_szvmek/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
         </div>
 
-        <form class="panel form contact-form reveal" action="https://formspree.io/f/xbdebbna" method="post">
+        <form class="panel form contact-form" action="https://formspree.io/f/xbdebbna" method="post">
             <input type="hidden" name="_subject" value="Nowa wiadomość ze strony szymonrokicki.pl">
             <input type="hidden" name="_next" value="https://szymonrokicki.pl/kontakt/">
             <input type="hidden" name="_language" value="pl">

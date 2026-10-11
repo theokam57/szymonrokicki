@@ -1,0 +1,79 @@
+/* Compact footer shared by every public page. */
+.site-footer {
+  padding: 1.8rem 0;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(22, 16, 10, 0.98), rgba(10, 8, 6, 0.99));
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+.footer-grid > div {
+  flex: 1 1 20rem;
+  min-width: 0;
+}
+
+.footer-grid .scribe-footer {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+}
+
+.footer-grid .footer-note {
+  margin: 0.2rem 0 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.footer-grid .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+.footer-grid .footer-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.4rem;
+  padding: 0.3rem 0.68rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--text-soft);
+  background: transparent;
+  font-family: var(--font-head);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition), border-color var(--transition), background-color var(--transition);
+}
+
+.footer-grid .footer-links a:hover {
+  color: var(--gold-light);
+  border-color: rgba(231, 201, 114, 0.42);
+  background: rgba(231, 201, 114, 0.09);
+}
+
+.footer-grid .footer-links a:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-grid .footer-links {
+    justify-content: flex-start;
+  }
+}

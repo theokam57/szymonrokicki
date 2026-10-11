@@ -1,0 +1,282 @@
+{
+  "deutsche-heereskarte-lelow-1944.jpg": {
+    "width": 6500,
+    "height": 5486,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/deutsche-heereskarte-lelow-1944-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/deutsche-heereskarte-lelow-1944-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/deutsche-heereskarte-lelow-1944-1600.webp"
+      }
+    ]
+  },
+  "mapa-administracyjna-1956.jpg": {
+    "width": 6500,
+    "height": 5899,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-administracyjna-1956-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-administracyjna-1956-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-administracyjna-1956-1600.webp"
+      }
+    ]
+  },
+  "mapa-krolestwa-polskiego-1862.jpeg": {
+    "width": 6500,
+    "height": 5777,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-krolestwa-polskiego-1862-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-krolestwa-polskiego-1862-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-krolestwa-polskiego-1862-1600.webp"
+      }
+    ]
+  },
+  "mapa-królestwa-polskiego-1873.jpg": {
+    "width": 4124,
+    "height": 3628,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-królestwa-polskiego-1873-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-królestwa-polskiego-1873-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-królestwa-polskiego-1873-1600.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1787.jpg": {
+    "width": 768,
+    "height": 368,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1787-480.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1792.jpg": {
+    "width": 2093,
+    "height": 1206,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1792-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-lelow-1792-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-lelow-1792-1600.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1827.jpg": {
+    "width": 490,
+    "height": 312,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1827-480.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1862.jpg": {
+    "width": 941,
+    "height": 541,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1862-480.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1873.jpg": {
+    "width": 902,
+    "height": 462,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1873-480.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1914.jpg": {
+    "width": 6500,
+    "height": 5880,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1914-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-lelow-1914-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-lelow-1914-1600.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1944.jpg": {
+    "width": 2845,
+    "height": 2222,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1944-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-lelow-1944-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-lelow-1944-1600.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1956.jpg": {
+    "width": 1084,
+    "height": 734,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1956-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-lelow-1956-960.webp"
+      }
+    ]
+  },
+  "mapa-lelow-1970.jpg": {
+    "width": 598,
+    "height": 345,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-1970-480.webp"
+      }
+    ]
+  },
+  "mapa-lelow-mini-1914.jpg": {
+    "width": 2977,
+    "height": 1575,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-lelow-mini-1914-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-lelow-mini-1914-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-lelow-mini-1914-1600.webp"
+      }
+    ]
+  },
+  "mapa-prl-1970.jpg": {
+    "width": 6500,
+    "height": 5236,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-prl-1970-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-prl-1970-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-prl-1970-1600.webp"
+      }
+    ]
+  },
+  "mapa-wojewodztwa-krakowskiego-1787.jpg": {
+    "width": 6500,
+    "height": 5729,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1787-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1787-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1787-1600.webp"
+      }
+    ]
+  },
+  "mapa-wojewodztwa-krakowskiego-1792.jpg": {
+    "width": 6500,
+    "height": 5751,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1792-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1792-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1792-1600.webp"
+      }
+    ]
+  },
+  "mapa-wojewodztwa-krakowskiego-1827.jpg": {
+    "width": 2338,
+    "height": 3400,
+    "variants": [
+      {
+        "width": 480,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1827-480.webp"
+      },
+      {
+        "width": 960,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1827-960.webp"
+      },
+      {
+        "width": 1600,
+        "path": "assets/mapy/responsive/mapa-wojewodztwa-krakowskiego-1827-1600.webp"
+      }
+    ]
+  }
+}

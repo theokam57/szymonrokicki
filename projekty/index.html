@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Projekty historyczne, regionalne i społeczne prowadzone przez Szymona Rokickiego.">
-    <meta name="keywords" content="projekty, Szymon Rokicki, kultura, historia, gwary">
+    <meta name="description" content="Projekty Szymona Rokickiego: historia Lelowa, lokalna mowa, działania społeczne, mapy, źródła i inicjatywy regionalne.">
     <meta name="author" content="Szymon Rokicki">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#11100d">
-    <meta property="og:title" content="Projekty | Szymon Rokicki">
-    <meta property="og:description" content="Projekty historyczne, regionalne i społeczne prowadzone przez Szymona Rokickiego.">
+    <meta property="og:title" content="Projekty historyczne, regionalne i społeczne | Szymon Rokicki">
+    <meta property="og:description" content="Projekty Szymona Rokickiego: historia Lelowa, lokalna mowa, działania społeczne, mapy, źródła i inicjatywy regionalne.">
     <meta property="og:url" content="https://szymonrokicki.pl/projekty/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Szymon Rokicki">
+    <meta property="og:locale" content="pl_PL">
     <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta property="og:image:alt" content="Moje projekty">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Projekty | Szymon Rokicki">
-    <meta name="twitter:description" content="Projekty historyczne, regionalne i społeczne prowadzone przez Szymona Rokickiego.">
+    <meta name="twitter:title" content="Projekty historyczne, regionalne i społeczne | Szymon Rokicki">
+    <meta name="twitter:description" content="Projekty Szymona Rokickiego: historia Lelowa, lokalna mowa, działania społeczne, mapy, źródła i inicjatywy regionalne.">
     <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
     <link rel="canonical" href="https://szymonrokicki.pl/projekty/">
     <link rel="manifest" href="/site.webmanifest">
@@ -24,11 +26,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
-    <link rel="preload" href="/assets/css/public.css" as="style">
-    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
-    <link rel="stylesheet" href="/assets/css/public.css">
-    <script src="/assets/js/public.js" defer></script>
-    <title>Projekty | Szymon Rokicki</title>
+    <link rel="preload" href="/assets/css/public.min.css" as="style">
+    <link rel="stylesheet" href="/assets/css/public.min.css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print">
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://szymonrokicki.pl/#szymon-rokicki","name":"Szymon Rokicki","url":"https://szymonrokicki.pl","image":"https://szymonrokicki.pl/assets/images/social-preview.jpg","knowsAbout":["historia Lelowa","dziedzictwo lokalne","mapy historyczne","źródła regionalne"]},{"@type":"WebSite","@id":"https://szymonrokicki.pl/#website","url":"https://szymonrokicki.pl","name":"Szymon Rokicki","inLanguage":"pl-PL","publisher":{"@id":"https://szymonrokicki.pl/#szymon-rokicki"},"potentialAction":{"@type":"SearchAction","target":"https://szymonrokicki.pl/szukaj/?q={search_term_string}","query-input":"required name=search_term_string"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://szymonrokicki.pl/"},{"@type":"ListItem","position":2,"name":"Moje projekty","item":"https://szymonrokicki.pl/projekty/"}]}</script>
+
+    <script type="module" src="/assets/js/public.js"></script>
+    <title>Projekty historyczne, regionalne i społeczne | Szymon Rokicki</title>
 </head>
 <body class="site-body" data-app-base="">
 <a class="skip-link" href="#main-content">Przejdź do treści</a>
@@ -36,7 +42,7 @@
     <div class="container header-flex">
         <div class="logo">
             <a href="/" aria-label="Szymon Rokicki">
-                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented" decoding="async" srcset="/assets/images/sr-logo.png 1024w" width="1024" height="1024">
             </a>
         </div>
 
@@ -52,6 +58,7 @@
                 <li><a href="/o-mnie/" class="">O mnie</a></li>
                 <li><a href="/projekty/" class="active">Projekty</a></li>
                 <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/sredniowiecze/" class="">Średniowiecze</a></li>
                 <li><a href="/kontakt/" class="">Kontakt</a></li>
                 <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
             </ul>
@@ -61,14 +68,27 @@
 
 <main id="main-content" class="history-page">
     <div class="container narrow editable-page-content">
-        <h1 class="medieval-heading reveal">Moje projekty</h1><p class="script-text initial-letter reveal">Od pasji do historii po działania społeczne i cyfrowe - tutaj zbieram inicjatywy, które rozwijam lub planuję.</p>
+        <nav class="breadcrumbs no-print" aria-label="Okruszki">
+            <a href="/">Strona główna</a><span aria-hidden="true">/</span><span aria-current="page">Projekty</span>
+        </nav>
+        <h1 class="medieval-heading">Projekty</h1>
+        <p class="script-text initial-letter">Od pasji do historii po działania społeczne i cyfrowe - tutaj zbieram inicjatywy, które rozwijam lub planuję.</p>
 
-        <!-- <div class="project-list">
-            <article class="history-box reveal">
-                <h3 class="medieval-heading"><a href="/artykul/mowimy-po-swojemu">Zalążek projektu „Mówimy po swojemu”</a></h3>
+        <!-- <section class="article-list tile-index" aria-label="Lista projektów">
+            <article class="history-box">
+                <h3 class="medieval-heading"><a href="/artykul/mowimy-po-swojemu/">Zalążek projektu „Mówimy po swojemu”</a></h3>
                 <p class="script-text">Robocze archiwum lokalnej mowy: słów, powiedzeń, nazw miejscowych i wspomnień, które warto zapisać, zanim znikną z codziennego użycia.</p>
             </article>
-        </div> -->
+            <article class="history-box">
+                <h3 class="medieval-heading"><a href="/historia-lelowa/mapa-interaktywna/">Interaktywna mapa Lelowa</a></h3>
+                <p class="script-text">Mapa z punktami orientacyjnymi dawnego Lelowa, osią czasu i odnośnikami do materiałów kartograficznych z galerii map.</p>
+            </article>
+            <article class="history-box">
+                <h3 class="medieval-heading"><a href="/historia-lelowa/galeria-map/">Galeria map historycznych</a></h3>
+                <p class="script-text">Uporządkowany zbiór lokalnych i regionalnych map, które pomagają porównywać dawny układ miasta, drogi i granice administracyjne.</p>
+            </article>
+        </section> -->
+
     </div>
 </main>
 

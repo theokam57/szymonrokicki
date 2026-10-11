@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Oficjalna strona Szymona Rokickiego - historia, kultura, Lelów i autorskie projekty.">
-    <meta name="keywords" content="Szymon Rokicki, historia, Lelów, średniowiecze, projekty historyczne">
+    <meta name="description" content="Autorska strona Szymona Rokickiego o historii Lelowa, dawnych mapach, lokalnym dziedzictwie, projektach społecznych i źródłach.">
     <meta name="author" content="Szymon Rokicki">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#11100d">
-    <meta property="og:title" content="Strona główna | Szymon Rokicki">
-    <meta property="og:description" content="Oficjalna strona Szymona Rokickiego - historia, kultura, Lelów i autorskie projekty.">
+    <meta property="og:title" content="Szymon Rokicki | Historia Lelowa, mapy i lokalne dziedzictwo">
+    <meta property="og:description" content="Autorska strona Szymona Rokickiego o historii Lelowa, dawnych mapach, lokalnym dziedzictwie, projektach społecznych i źródłach.">
     <meta property="og:url" content="https://szymonrokicki.pl/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Szymon Rokicki">
+    <meta property="og:locale" content="pl_PL">
     <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta property="og:image:alt" content="Nazywam się Szymon Rokicki">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Strona główna | Szymon Rokicki">
-    <meta name="twitter:description" content="Oficjalna strona Szymona Rokickiego - historia, kultura, Lelów i autorskie projekty.">
+    <meta name="twitter:title" content="Szymon Rokicki | Historia Lelowa, mapy i lokalne dziedzictwo">
+    <meta name="twitter:description" content="Autorska strona Szymona Rokickiego o historii Lelowa, dawnych mapach, lokalnym dziedzictwie, projektach społecznych i źródłach.">
     <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
     <link rel="canonical" href="https://szymonrokicki.pl/">
     <link rel="manifest" href="/site.webmanifest">
@@ -24,10 +26,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
-    <link rel="preload" href="/assets/css/public.css" as="style">
-    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
-    <link rel="stylesheet" href="/assets/css/public.css">
-    <script src="/assets/js/public.js" defer></script>
+    <link rel="preload" href="/assets/images/hero-bg.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="/assets/css/public.min.css" as="style">
+    <link rel="stylesheet" href="/assets/css/public.min.css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print">
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://szymonrokicki.pl/#szymon-rokicki","name":"Szymon Rokicki","url":"https://szymonrokicki.pl","image":"https://szymonrokicki.pl/assets/images/social-preview.jpg","knowsAbout":["historia Lelowa","dziedzictwo lokalne","mapy historyczne","źródła regionalne"]},{"@type":"WebSite","@id":"https://szymonrokicki.pl/#website","url":"https://szymonrokicki.pl","name":"Szymon Rokicki","inLanguage":"pl-PL","publisher":{"@id":"https://szymonrokicki.pl/#szymon-rokicki"},"potentialAction":{"@type":"SearchAction","target":"https://szymonrokicki.pl/szukaj/?q={search_term_string}","query-input":"required name=search_term_string"}}]}</script>
+
+    <script type="module" src="/assets/js/public.js"></script>
     <title>Strona główna | Szymon Rokicki</title>
 </head>
 <body class="site-body" data-app-base="">
@@ -36,7 +42,7 @@
     <div class="container header-flex">
         <div class="logo">
             <a href="/" aria-label="Szymon Rokicki">
-                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented" decoding="async" srcset="/assets/images/sr-logo.png 1024w" width="1024" height="1024">
             </a>
         </div>
 
@@ -52,6 +58,7 @@
                 <li><a href="/o-mnie/" class="">O mnie</a></li>
                 <li><a href="/projekty/" class="">Projekty</a></li>
                 <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/sredniowiecze/" class="">Średniowiecze</a></li>
                 <li><a href="/kontakt/" class="">Kontakt</a></li>
                 <li class="nav-support"><a href="/wesprzyj/" class="">Wesprzyj</a></li>
             </ul>
@@ -59,7 +66,7 @@
     </div>
 </header>
 
-<section class="hero reveal">
+<section class="hero">
     <div class="hero-content">
         <p class="eyebrow">Historia, kultura, polityka</p>
         <h1 class="medieval-heading-main">Nazywam się Szymon Rokicki</h1>
@@ -73,8 +80,8 @@
 
 <main id="main-content" class="home-main">
     <section class="intro section">
-        <div class="container narrow reveal editable-page-content">
-            <h2 class="medieval-heading-main">Witam na mojej stronie</h2><p class="script-text initial-letter">To miejsce, gdzie historia spotyka się z nowoczesnością. Strona powstała nie tylko jako osobiste portfolio ale też z potrzeby udokumentowania i podzielenia się dziejami mojej małej ojczyzny - Lelowa. Historia niestety strasznie potraktowała Civitas Lelov - stąd też chciałbym zawrzeć na stronie moje prowizoryczne analizy jak i badania, ale także informacje które udało mi się odnaleźć w książkach jak i w czeluściach internetu. Skoncentrować ją w jednym miejscu tak aby pamięć o nim nie zginęła. Zapraszam do lektury.</p>
+        <div class="container narrow editable-page-content">
+            <h2 class="medieval-heading-main">Witam na mojej stronie</h2><p class="script-text initial-letter">o miejsce, gdzie historia spotyka się z nowoczesnością. Strona powstała nie tylko jako osobiste portfolio ale też z potrzeby udokumentowania i podzielenia się dziejami mojej małej ojczyzny - Lelowa. Historia niestety strasznie potraktowała Civitas Lelov - stąd też chciałbym zawrzeć na stronie moje prowizoryczne analizy jak i badania, ale także informacje które udało mi się odnaleźć w książkach jak i w czeluściach internetu. Skoncentrować ją w jednym miejscu tak aby pamięć o nim nie zginęła. Zapraszam do lektury.</p>
         </div>
     </section>
 
@@ -84,91 +91,35 @@
                 <h2 class="medieval-heading-main">Odkryj zawartość strony</h2>
             </div>
             <div class="summary-grid">
-                <a href="/o-mnie/" class="summary-item reveal">
-                    <span class="tile-kicker">Osoba</span>
+                <a href="/o-mnie/" class="summary-item">
                     <h3>O mnie</h3>
                     <p>Poznaj moją pasję do historii i działalność społeczną.</p>
                 </a>
-                <a href="/projekty/" class="summary-item reveal">
-                    <span class="tile-kicker">Praca</span>
+                <a href="/projekty/" class="summary-item">
                     <h3>Projekty</h3>
                     <p>Rekonstrukcje, inicjatywy i działania społeczne prowadzone z myślą o lokalnym dziedzictwie.</p>
                 </a>
-                <a href="/historia-lelowa/" class="summary-item reveal">
-                    <span class="tile-kicker">Dziedzictwo</span>
+                <a href="/historia-lelowa/" class="summary-item">
                     <h3>Historia Lelowa</h3>
                     <p>Lokacja, zamek, mapy i życie dawnego miasta w jednym miejscu.</p>
                 </a>
-                <a href="/mapa-interaktywna/" class="summary-item reveal">
+                <!-- <a href="/historia-lelowa/mapa-interaktywna/" class="summary-item">
                     <span class="tile-kicker">Mapa</span>
                     <h3>Mapa interaktywna</h3>
                     <p>Prawdziwa mapa OpenStreetMap z punktami orientacyjnymi dawnego Lelowa.</p>
-                </a>
-                <a href="/galeria-map/" class="summary-item reveal">
+                </a> -->
+                <!-- <a href="/historia-lelowa/galeria-map/" class="summary-item">
                     <span class="tile-kicker">Archiwum</span>
                     <h3>Galeria map</h3>
                     <p>Osobny przegląd lokalnych i regionalnych map używanych w opracowaniach.</p>
-                </a>
-                <a href="/kontakt/" class="summary-item reveal">
-                    <span class="tile-kicker">Rozmowa</span>
+                </a> -->
+                <a href="/kontakt/" class="summary-item">
                     <h3>Kontakt</h3>
                     <p>Masz pytanie albo pomysł na współpracę? Napisz do mnie.</p>
                 </a>
             </div>
         </div>
     </section>
-
-    <!-- <section class="latest-texts section">
-        <div class="container">
-            <div class="section-heading">
-                <h2 class="medieval-heading-main">Polecany artykuł</h2>
-            </div>
-            <div class="article-grid">
-                <article class="card article-card is-featured reveal">
-                    <div class="card-body">
-                        <p class="card-kicker">Historia Lelowa</p>
-                        <h3><a href="/artykul/stary-lelow">Stary Lelów</a></h3>
-                        <p class="article-card-lead">Szkic o przedlokacyjnym ośrodku, Staromieściu, najstarszej wzmiance z 1193 roku i drodze do lokacyjnego miasta.</p>
-                        <div class="article-card-meta">
-                            <span>26.07.2026</span>
-                            <span>5 min czytania</span>
-                        </div>
-                        <a href="/artykul/stary-lelow" class="card-link">Czytaj tekst</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="recent-texts section">
-        <div class="container">
-            <div class="section-heading">
-                <h2 class="medieval-heading-main">Ostatnie teksty</h2>
-            </div>
-            <div class="summary-grid compact-grid">
-                <a href="/artykul/zamek-lelowski" class="summary-item reveal">
-                    <span class="tile-kicker">Zamek</span>
-                    <h3>Zamek lelowski</h3>
-                    <p>Od grodu i królewskiej warowni po rozbiórkę w XIX wieku.</p>
-                </a>
-                <a href="/artykul/mury-miejskie-lelowa" class="summary-item reveal">
-                    <span class="tile-kicker">Fortyfikacje</span>
-                    <h3>Mury miejskie</h3>
-                    <p>Brama Nakielska, obwód obronny i granice dawnego miasta.</p>
-                </a>
-                <a href="/artykul/rynek-w-lelowie" class="summary-item reveal">
-                    <span class="tile-kicker">Miasto</span>
-                    <h3>Rynek w Lelowie</h3>
-                    <p>Centrum handlu, spotkań i pamięci urbanistycznej.</p>
-                </a>
-                <a href="/kalendarium/" class="summary-item reveal">
-                    <span class="tile-kicker">Daty</span>
-                    <h3>Kalendarium</h3>
-                    <p>Najważniejsze punkty na osi dziejów Lelowa.</p>
-                </a>
-            </div>
-        </div>
-    </section> -->
 </main>
 
 <footer class="site-footer">

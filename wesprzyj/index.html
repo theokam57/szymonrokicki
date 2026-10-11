@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Wesprzyj utrzymanie strony i domeny szymonrokicki.pl. Zobacz postęp zbiórki i wesprzyj projekt przez Suppi.">
-    <meta name="keywords" content="wesprzyj, zbiórka, domena, Szymon Rokicki, Suppi">
+    <meta name="description" content="Wesprzyj utrzymanie strony szymonrokicki.pl, rozwój opracowań o historii Lelowa, map, źródeł i projektów lokalnych.">
     <meta name="author" content="Szymon Rokicki">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#11100d">
-    <meta property="og:title" content="Wesprzyj | Szymon Rokicki">
-    <meta property="og:description" content="Wesprzyj utrzymanie strony i domeny szymonrokicki.pl.">
+    <meta property="og:title" content="Wesprzyj stronę o historii Lelowa | Szymon Rokicki">
+    <meta property="og:description" content="Wesprzyj utrzymanie strony szymonrokicki.pl, rozwój opracowań o historii Lelowa, map, źródeł i projektów lokalnych.">
     <meta property="og:url" content="https://szymonrokicki.pl/wesprzyj/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Szymon Rokicki">
+    <meta property="og:locale" content="pl_PL">
     <meta property="og:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
+    <meta property="og:image:alt" content="Wesprzyj tę stronę">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Wesprzyj | Szymon Rokicki">
-    <meta name="twitter:description" content="Wesprzyj utrzymanie strony i domeny szymonrokicki.pl.">
+    <meta name="twitter:title" content="Wesprzyj stronę o historii Lelowa | Szymon Rokicki">
+    <meta name="twitter:description" content="Wesprzyj utrzymanie strony szymonrokicki.pl, rozwój opracowań o historii Lelowa, map, źródeł i projektów lokalnych.">
     <meta name="twitter:image" content="https://szymonrokicki.pl/assets/images/social-preview.jpg">
     <link rel="canonical" href="https://szymonrokicki.pl/wesprzyj/">
     <link rel="manifest" href="/site.webmanifest">
@@ -24,11 +26,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap">
-    <link rel="preload" href="/assets/css/public.css" as="style">
-    <link rel="preload" href="/assets/images/sr-logo.png" as="image">
-    <link rel="stylesheet" href="/assets/css/public.css">
-    <script src="/assets/js/public.js" defer></script>
-    <title>Wesprzyj | Szymon Rokicki</title>
+    <link rel="preload" href="/assets/css/public.min.css" as="style">
+    <link rel="stylesheet" href="/assets/css/public.min.css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print">
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://szymonrokicki.pl/#szymon-rokicki","name":"Szymon Rokicki","url":"https://szymonrokicki.pl","image":"https://szymonrokicki.pl/assets/images/social-preview.jpg","knowsAbout":["historia Lelowa","dziedzictwo lokalne","mapy historyczne","źródła regionalne"]},{"@type":"WebSite","@id":"https://szymonrokicki.pl/#website","url":"https://szymonrokicki.pl","name":"Szymon Rokicki","inLanguage":"pl-PL","publisher":{"@id":"https://szymonrokicki.pl/#szymon-rokicki"},"potentialAction":{"@type":"SearchAction","target":"https://szymonrokicki.pl/szukaj/?q={search_term_string}","query-input":"required name=search_term_string"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://szymonrokicki.pl/"},{"@type":"ListItem","position":2,"name":"Wesprzyj tę stronę","item":"https://szymonrokicki.pl/wesprzyj/"}]}</script>
+
+    <script type="module" src="/assets/js/public.js"></script>
+    <title>Wesprzyj stronę o historii Lelowa | Szymon Rokicki</title>
 </head>
 <body class="site-body" data-app-base="">
 <a class="skip-link" href="#main-content">Przejdź do treści</a>
@@ -36,7 +42,7 @@
     <div class="container header-flex">
         <div class="logo">
             <a href="/" aria-label="Szymon Rokicki">
-                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented">
+                <img src="/assets/images/sr-logo.png" alt="Szymon Rokicki" class="logo-img ornamented" decoding="async" srcset="/assets/images/sr-logo.png 1024w" width="1024" height="1024">
             </a>
         </div>
 
@@ -52,6 +58,7 @@
                 <li><a href="/o-mnie/" class="">O mnie</a></li>
                 <li><a href="/projekty/" class="">Projekty</a></li>
                 <li><a href="/historia-lelowa/" class="">Historia Lelowa</a></li>
+                <li><a href="/sredniowiecze/" class="">Średniowiecze</a></li>
                 <li><a href="/kontakt/" class="">Kontakt</a></li>
                 <li class="nav-support"><a href="/wesprzyj/" class="active">Wesprzyj</a></li>
             </ul>
@@ -61,10 +68,10 @@
 
 <main id="main-content" class="history-page">
     <div class="container narrow editable-page-content">
-        <h1 class="medieval-heading reveal">Wesprzyj tę stronę</h1>
-        <p class="script-text initial-letter reveal">Ta strona to zbiór autorskich tekstów o historii Lelowa i średniowieczu. Prowadzę ją i utrzymuję samodzielnie. Jeśli chcesz pomóc pokryć koszt domeny i utrzymania serwisu, możesz wesprzeć projekt drobną kwotą. Każde wsparcie pomaga, aby pamięć o <i>Civitas Lelov</i> trwała dalej.</p>
+        <h1 class="medieval-heading">Wesprzyj tę stronę</h1>
+        <p class="script-text initial-letter">Ta strona to zbiór autorskich tekstów o historii Lelowa i średniowieczu. Prowadzę ją i utrzymuję samodzielnie. Jeśli chcesz pomóc pokryć koszt domeny i utrzymania serwisu, możesz wesprzeć projekt drobną kwotą. Każde wsparcie pomaga, aby pamięć o <i>Civitas Lelov</i> trwała dalej.</p>
 
-        <section class="support-goal reveal" data-support data-collected="0" data-target="80" aria-label="Postęp zbiórki na domenę">
+        <section class="support-goal" data-support data-collected="0" data-target="80" aria-label="Postęp zbiórki na domenę">
             <div class="support-amounts">
                 <span class="support-collected" data-support-collected>0 zł</span>
                 <span class="support-target">z celu <span data-support-target>80 zł</span></span>
@@ -78,7 +85,7 @@
             </div>
         </section>
 
-        <div class="history-box reveal">
+        <div class="history-box">
             <h3 class="medieval-heading">Na co idą środki?</h3>
             <p class="script-text">Przede wszystkim na roczną opłatę za domenę <strong>szymonrokicki.pl</strong> oraz utrzymanie strony. Nadwyżka pozwoli rozwijać kolejne materiały: mapy, opracowania i rekonstrukcje.</p>
         </div>
@@ -107,7 +114,7 @@
         if (fill) fill.style.width = percent + "%";
 
         var track = box.querySelector("[data-support-track]");
-        if (track) track.setAttribute("aria-valuenow", String(percent));
+        if (track) track.setAttribute("aria-valuenow", String(collected));
     })();
 </script>
 

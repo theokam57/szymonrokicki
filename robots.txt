@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /generator/
+Disallow: /szablony/
+Disallow: /assets/images/uploads/
+
+Sitemap: https://szymonrokicki.pl/sitemap.xml

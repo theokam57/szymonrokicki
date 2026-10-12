@@ -29,6 +29,13 @@
         <image:image><image:loc>https://szymonrokicki.pl/assets/images/social-preview.jpg</image:loc></image:image>
     </url>
     <url>
+        <loc>https://szymonrokicki.pl/historia-lelowa/bulla-papieza-innocentego-iv/</loc>
+        <lastmod>2026-10-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <image:image><image:loc>https://szymonrokicki.pl/assets/images/social-preview.jpg</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://szymonrokicki.pl/historia-lelowa/co-zobaczyc-w-lelowie/</loc>
         <lastmod>2026-10-11</lastmod>
         <changefreq>monthly</changefreq>

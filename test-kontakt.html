@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Test formularza kontaktowego</title>
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async defer></script>
+</head>
+<body>
+  <h1>Test API kontaktowego</h1>
+
+  <form
+    action="https://api.szymonrokicki.pl/kontakt.php"
+    method="POST">
+
+    <label for="email">Adres e-mail</label>
+    <input id="email" type="email"
+           name="email" required>
+
+    <label for="message">Wiadomość</label>
+    <textarea id="message" name="message"
+              required></textarea>
+
+    <div class="cf-turnstile"
+         data-sitekey="0x4AAAAAAFt8TI_xXHYf3SzO"
+         data-action="kontakt"></div>
+
+    <button type="submit">Wyślij wiadomość</button>
+  </form>
+</body>
+</html>

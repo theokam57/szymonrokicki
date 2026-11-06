@@ -1,35 +1,42 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>Test formularza kontaktowego</title>
-  <script
-    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-    async defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Test formularza Contact API</title>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>
+    :root { color-scheme: light; font-family: system-ui,-apple-system,"Segoe UI",sans-serif; }
+    body { margin:0; background:#f4f6f9; color:#172433; padding:32px 16px; }
+    main { box-sizing:border-box; max-width:580px; margin:4vh auto; background:#fff; padding:32px; border:1px solid #dfe4ec; border-radius:14px; box-shadow:0 10px 32px #1724330a; }
+    h1 { margin:0 0 10px; font-size:1.7rem; }
+    p { color:#526175; line-height:1.55; }
+    label { display:block; font-weight:600; margin:22px 0 7px; }
+    input,textarea { box-sizing:border-box; width:100%; padding:12px; font:inherit; border:1px solid #aab7c9; border-radius:8px; background:#fff; color:#172433; }
+    input:focus,textarea:focus { outline:2px solid #3867bf; outline-offset:1px; }
+    textarea { min-height:150px; resize:vertical; }
+    .cf-turnstile { margin:22px 0; }
+    button { border:0; border-radius:8px; background:#1b4d98; color:#fff; font:600 1rem inherit; font-family:inherit; font-size:1rem; font-weight:600; padding:13px 22px; cursor:pointer; }
+    button:hover { background:#133b77; }
+    small { display:block; margin-top:20px; color:#5c6878; }
+    code { font-size:.93em; }
+  </style>
 </head>
 <body>
-  <h1>Test API kontaktowego</h1>
-
-  <form
-    action="https://api.szymonrokicki.pl/kontakt.php"
-    method="POST">
-
-    <label for="email">Adres e-mail</label>
-    <input id="email" type="email"
-           name="email" required>
-
-    <label for="message">Wiadomość</label>
-    <textarea id="message" name="message"
-              required></textarea>
-
-    <div class="cf-turnstile"
-         data-sitekey="0x4AAAAAAFt8TI_xXHYf3SzO"
-         data-action="kontakt"></div>
-
-    <button type="submit">Wyślij wiadomość</button>
-  </form>
+  <main>
+    <h1>Test Contact API</h1>
+    <p>Ten formularz wysyła wiadomość bezpośrednio do <code>https://api.szymonrokicki.pl/kontakt.php</code>, bez Formspree.</p>
+    <form action="https://api.szymonrokicki.pl/kontakt.php" method="post" accept-charset="UTF-8">
+      <label for="email">Adres e-mail</label>
+      <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+      <label for="message">Wiadomość</label>
+      <textarea id="message" name="message" minlength="3" maxlength="2400" required>Test Contact API — proszę zignorować.</textarea>
+      <!-- WAŻNE: podmień wartość data-sitekey na PUBLICZNY klucz Turnstile dla domeny szymonrokicki.pl. -->
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFt8TI_xXHYf3SzO" data-action="kontakt"></div>
+      <button type="submit">Wyślij wiadomość testową</button>
+    </form>
+    <small>Po wysłaniu API przekieruje Cię na adres skonfigurowany w <code>success_url</code>. Na potrzeby testu opublikuj plik w domenie dozwolonej w ustawieniach Turnstile i weryfikacji API.</small>
+  </main>
 </body>
 </html>
